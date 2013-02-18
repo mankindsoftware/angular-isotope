@@ -1,0 +1,41 @@
+<div>
+  <div id='options' class='option-combo clearfix'>
+    <ul iso-sort-by-data kind-opts  opt-key="sortBy" opt-event="opt" >
+      <li><a opt-sel=".name" class='selected'>Name</a></li>
+      <li><a opt-sel="[number]" opt-convert="function(s){return parseInt(s);}">Number</a></li>
+      <li><a opt-sel="[date]" opt-type="integer">Date</a></li>
+      <li><a opt-sel=".price" opt-type="currency">Price</a></li>
+    </ul>
+  </div>
+  <div id='options' class='option-combo clearfix'>
+    <ul kind-opts opt-key="filter" opt-event="opt">
+      <li><a opt-sel="*" class="selected">show all</a></li>
+      <li><a opt-sel=".metal">metal</a></li>
+      <li><a opt-sel=".transition">transition</a></li>
+      <li><a opt-sel=".alkali, .alkaline-earth">alkali and alkaline-earth</a></li>
+      <li><a opt-sel=":not(.transition)">not transition</a></li>
+      <li><a onClick="$('#isoContainer').isotope({ filter: '.metal:not(.transition)' });" opt-val=".metal:not(.transition)">metal but not transition</a></li>
+    </ul>
+  </div>
+  
+  <div class="clearfix"/>
+  <div ng-init="xList=[{name:'a', number:'33', date:'1360613309421', price:'$15', class:'alkali'}
+      ,{name:'c', number:'23', date:'1360613309421', price:'$55', class:'alkali'}
+      ,{name:'ccc', number:'22', date:'1360613309421', price:'$55', class:'metal'} 
+      ,{name:'z', number:'46', date:'1360613309421', price:'$515', class:'metal'}
+      ,{name:'b', number:'1', date:'1360613309421', price:'$552', class:'metal'}
+      ,{name:'xfd', number:'31', date:'1360613309421', price:'$355', class:'.alkali'}
+      ,{name:'5bddd', number:'155', date:'1360613309421', price:'$545', class:'metal transition'}
+      ,{name:'qbem', number:'177', date:'1360613309001', price:'$554', class:'metal'}
+      ,{name:'erweb', number:'13', date:'1360613309000', price:'$5555', class:'metal'}
+      ] ">
+    </div>
+    <ul id="isoContainer" isotope-container >
+      <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}">
+         <div class="name">{{x.name}}</div>
+         <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
+         <div class="number" number="{{x.number}}">{{x.number}}</div>
+       </li>
+    </ul>
+  </div>
+</div>

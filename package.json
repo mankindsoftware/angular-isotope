@@ -1,0 +1,23 @@
+{
+  "author": "Mark Allen Hall",
+  "name": "angular-isotope",
+  "description": "AngularIsotope - Isotope directives for AngularJS",
+  "version": "0.0.1",
+  "homepage": "http://mankindsoftware.github.com/angular-isotope",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mankindsoftware/angular-isotope.git"
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "testacular": ">= 0.4.0",
+    "grunt": ">= 0.3.17"
+  },
+  "scripts": {
+    "test": "testacular start test/testacular.conf.js --single-run --browsers PhantomJS",
+    "test-server": "testacular start test/testacular.conf.js --browsers PhantomJS"
+  }
+}
