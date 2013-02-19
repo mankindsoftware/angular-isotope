@@ -4,56 +4,76 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 
 	var onLayoutEvent = "isotope.onLayout"
 	, isotopeOptions = {}
-	, initialized = false
+	, postInitialized = false
 	, isotopeContainer = null
+	, buffer = []
+	, setMode = "insert"
 	;
 	
+	$scope.$on(onLayoutEvent, function(event) {});
+
 	isotopeOptions["onLayout"] = function($elems, instance) {
-				$scope.$apply($timeout(function() {
-					$scope.$emit(onLayoutEvent);
-				}));
-			};
+		// $scope.$apply($timeout(function() {
+		// 	$scope.$emit(onLayoutEvent);
+		// }));
+	};
 
 	$scope.init = function($container) {
 		isotopeContainer = $container;
-
-		if (false === initialized) {
-
-			$timeout(function() {
-				$scope.$apply( isotopeContainer.isotope(isotopeOptions))
-			});
-			return true;
-		}
-	};
-
-	$scope.$on(onLayoutEvent, function(event) {});
-
-	$scope.setIsoOptions = function(myoptions) {
-		//console.log("setIsoOptions !!!");
-		isotopeOptions = myoptions;
-		isotopeContainer
-		// .isotope(options[0].isotopeOptions) // For a refresh
-		.isotope('reloadItems').isotope(myoptions);
-		//$(document.documentElement).find('.lazyload').trigger("mkLazyLoadAll"); // TODO. Have rootScope broadcast this
+		setMode = $container.attr("iso-set");
+		$timeout(
+			//$scope.$apply(
+				function() {
+					isotopeContainer.isotope(isotopeOptions);
+					postInitialized = true;
+				}
+			//)
+		);
 	};
 
 	$scope.removeAll = function() {
-		isotopeContainer.isotope('remove', 
+		isotopeContainer.isotope('remove',
 			isotopeContainer.data('isotope').$allAtoms);
 	};
 
+	$scope.setIsoElement = function($element) {
+		if (!postInitialized) { return; }
+		$timeout(function(setMode) {
+			switch (setMode) {
+				case 'add':
+					$scope.addIsoElement($element);
+					break;
+				case 'insert':
+					$scope.insertIsoElement($element);
+					break;
+				case 'buffer':
+					buffer.push($element.valueOf());
+					break;
+				default:
+					$timeout(function() {$scope.insertIsoElement($element);});
+			}
+		});
+	};
+
+	$scope.refreshIso = function() {
+		if (!postInitialized) { return; }
+		if (buffer.length) {
+				$scope.addIsoElement(buffer);
+				buffer = [];
+		}
+		isotopeContainer.isotope();
+	};
+
+	$scope.refresh = function() {
+		isotopeContainer.isotope();
+	};
+
 	$scope.insertIsoElement = function($element) {
-		if (!initialized) { return; }
 		return isotopeContainer.isotope("insert", $element);
 	};
 
 	$scope.addIsoElement = function($element) {
-		if (!initialized) { return; }
 		return isotopeContainer.isotope("addItems", $element);
-	};
-
-	$scope.refreshIsoOptions = function() {
-			// myScope.isotopeContainer.isotope(isotopeOptions);
 	};
 	
 	$scope.updateOptions = function(option) {
@@ -73,7 +93,7 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 	$scope.$on('method', function(event, option) {
 		$scope.updateOptions(option);
 	});
-})
+});
 
 
 

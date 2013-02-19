@@ -5,16 +5,16 @@ angular.module('iso.directives')
 	var options = {};
 	return {
 		link: function(scope,element,attrs) {
-			var $element = $(element);
-			var linkOptions = [];
-			
+			var $element = $(element)
+			, linkOptions = []
+			;
 			// If ui-options are passed, merge (or override) them onto global defaults and pass to the jQuery method
-	      	// if (attrs.isotopeOptions) {
-	       //  	linkOptions = scope.$eval('[' + attrs.isotopeOptions + ']');
-	       //  	if (angular.isObject(options) && angular.isObject(linkOptions[0])) {
-	       //    		linkOptions[0] = angular.extend({}, options, linkOptions[0]);
-	       //  	}
-	      	// } 
+			// if (attrs.isotopeOptions) {
+			//		linkOptions = scope.$eval('[' + attrs.isotopeOptions + ']');
+			//		if (angular.isObject(options) && angular.isObject(linkOptions[0])) {
+			//			linkOptions[0] = angular.extend({}, options, linkOptions[0]);
+			//		}
+			// }
 
 			// $element.addClass(linkOptions[0].containerClass);
 			scope.init($element, linkOptions[0]);
@@ -30,14 +30,14 @@ angular.module('iso.directives')
 
 		link: function(scope,element,attrs) {
 			var $element = $(element);
+
 			//$element.addClass(scope.isotopeOptions.itemClass);
-			scope.addIsoElement($element);
+			scope.setIsoElement($element);
 
 			// Refresh after last element.
-			if (scope.$last == true) {
+			if (attrs.ngRepeat && true === scope.$last) {
 				element.ready(function () {
-					//console.log("refresh")
-					scope.refreshIsoOptions();
+					scope.refreshIso();
 				});
 			}
 			return element;

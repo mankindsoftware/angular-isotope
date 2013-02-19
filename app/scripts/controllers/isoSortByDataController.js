@@ -26,7 +26,6 @@ isotopeApp.controller('isoSortByData', function($scope) {
       var options=$(elem)
       , sortDataArray = reduce($.map(options, $scope.optSortData))
       ;
-
       return sortDataArray;
     };
 
@@ -74,5 +73,5 @@ isotopeApp.controller('isoSortByData', function($scope) {
       , val = toType(text, type);
       return evaluate ? evaluate(val) : val;
     };
-  });
+});
 

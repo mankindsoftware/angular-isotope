@@ -14,7 +14,8 @@
       <li><a opt-sel=".transition">transition</a></li>
       <li><a opt-sel=".alkali, .alkaline-earth">alkali and alkaline-earth</a></li>
       <li><a opt-sel=":not(.transition)">not transition</a></li>
-      <li><a onClick="$('#isoContainer').isotope({ filter: '.metal:not(.transition)' });" opt-val=".metal:not(.transition)">metal but not transition</a></li>
+      <li><a opt-set=".metal:not(.transition)">metal but not transition</a></li>
+
     </ul>
   </div>
   
@@ -30,12 +31,17 @@
       ,{name:'erweb', number:'13', date:'1360613309000', price:'$5555', class:'metal'}
       ] ">
     </div>
-    <ul id="isoContainer" isotope-container >
+    <ul id="isotopeContainer" isotope-container>
       <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}">
          <div class="name">{{x.name}}</div>
          <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
          <div class="number" number="{{x.number}}">{{x.number}}</div>
-       </li>
+      </li>
+<!--       <li id="me" isotope-item class="kindling metal">
+         <div class="name">Extra</div>
+         <div class="weight" date="1360613309421">{{'1360613309421' | date}}</div>
+         <div class="number" number="4">4</div>
+      </li> -->
     </ul>
   </div>
 </div>
