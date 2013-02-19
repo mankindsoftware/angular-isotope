@@ -13,21 +13,21 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 	$scope.$on(onLayoutEvent, function(event) {});
 
 	isotopeOptions["onLayout"] = function($elems, instance) {
-		// $scope.$apply($timeout(function() {
-		// 	$scope.$emit(onLayoutEvent);
-		// }));
+		$timeout(function() {
+			$scope.$apply(function() {
+				$scope.$emit(onLayoutEvent);
+			});
+		});
 	};
 
 	$scope.init = function($container) {
 		isotopeContainer = $container;
 		setMode = $container.attr("iso-set");
 		$timeout(
-			//$scope.$apply(
 				function() {
 					isotopeContainer.isotope(isotopeOptions);
 					postInitialized = true;
 				}
-			//)
 		);
 	};
 
