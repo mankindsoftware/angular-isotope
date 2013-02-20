@@ -1,13 +1,13 @@
 angular.module('iso.directives')
-.directive('isoSortByData', function() {
+.directive('isoSortbyData', function() {
   return {
     restrict: 'A'
-    , controller: "isoSortByData"
+    , controller: "isoSortbyData"
     , replace: true
     , link: function(scope, element, attrs) {
       var optionSet = $(element)
       , optKey = optionSet.attr('opt-key')
-      , optEvent = optionSet.attr('opt-event')
+      , optEvent = "iso-opts" // Not attr('opt-publish'), as this may not be instantiated.
       , options = {}
       , methSet = optionSet.children().find("[opt-sel]")
       ;

@@ -1,12 +1,12 @@
 angular.module('iso.directives')
 
-.directive('kindOpts', function(){
+.directive('optKind', function(){
   return {
     restrict: 'A'
     , replace: true
     , link: function(scope, element, attrs) {
       var optionSet = $(element)
-      , optEvent = attrs.optEvent || "kind-opts"
+      , optPublish = attrs.optPublish || "opt-kind-opt"
       , optKey = optionSet.attr('opt-key')
       ;
 
@@ -19,7 +19,7 @@ angular.module('iso.directives')
         if (val) {
           var option = {};
           option[optKey] = val;
-          scope.$emit(optEvent, option);
+          scope.$emit(optPublish, option);
         }
       };
 

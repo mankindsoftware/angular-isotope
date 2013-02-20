@@ -7,17 +7,23 @@ angular.module('iso.directives')
 		link: function(scope,element,attrs) {
 			var $element = $(element)
 			, linkOptions = []
+			, isoOptions = attrs.isoOptions
+			, isoInit = {}
 			;
 
 			// If ui-options are passed, merge them onto global defaults.
-			if (attrs.isotopeOptions) {
-					linkOptions = scope.$eval('[' + attrs.isotopeOptions + ']');
+			if (isoOptions) {
+					linkOptions = scope.$eval('[' + isoOptions + ']');
 					if (angular.isObject(linkOptions[0])) {
 						scope.updateOptions(linkOptions[0]);
 					}
 			}
 
-			scope.init($element);
+			isoInit['element'] = $element;
+			isoInit['isoOptionsEvent'] = attrs.isoOptionsSubscribe;
+			isoInit['isoMethodEvent'] = attrs.isoMethodSubscribe;
+
+			scope.init(isoInit);
 			return element;
 		}
 	};

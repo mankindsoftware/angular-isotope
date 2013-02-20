@@ -1,7 +1,11 @@
 <div>
+  <span>
+    <h1>Angular Isotope Basic Example, featuring OptKind</h1>
+  </span>
   <span id='options' class='option-combo'>
     <h3>Sort By</h3>
-    <ul iso-sort-by-data kind-opts  opt-key="sortBy" opt-event="opt" >
+    <!-- iso-sortby-data must come before opt-kind -->
+    <ul iso-sortby-data opt-kind opt-key="sortBy" opt-publish="my-iso-opts" >
       <li><a opt-sel=".name" class='selected'>Name</a></li>
       <li><a opt-sel="[number]" opt-type="integer">Number</a></li>
       <li><a opt-sel="[date]" opt-type="integer">Date</a></li>
@@ -10,17 +14,18 @@
   <div class="clearfix"/>
   <span id='options' class='option-combo'>
     <h3>Filter</h3>
-    <ul kind-opts opt-key="filter" opt-event="opt">
+    <ul opt-kind opt-key="filter" opt-publish="my-iso-opts">
       <li><a opt-sel="*" class="selected">Show All</a></li>
       <li><a opt-sel=".purple">Purple</a></li>
       <li><a opt-sel=".orange">Orange</a></li>
       <li><a opt-sel=".blue">Blue</a></li>
       <li><a opt-sel=".green">Green</a></li>
       <li><a opt-sel=":not(.blue)">Not Blue</a></li>
-    </ul>
+      <li><a opt-sel="#extra">Extra Only</a></li>
+      </ul>
   </span>
   <div class="clearfix"/>
-  <h1></h1>
+  <h2></h2>
   <div ng-init=
       "xList=[
       {name:'a', number:'1', date:'1360413309421', class:'purple'}
@@ -34,14 +39,14 @@
       ,{name:'i', number:'22', date:'1360412309421', class:'blue'}
       ] ">
   </div>
-  <ul id="isotopeContainer" isotope-container>
+  <ul id="isotopeContainer" isotope-container iso-options-subscribe="my-iso-opts" iso-method-subscribe="my-iso-method">
     <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}">
-       <div class="name">{{x.name}}</div>
+       <div class="symbol">{{x.name}}</div>
        <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
        <div class="number" number="{{x.number}}">{{x.number}}</div>
     </li>
     <li id="extra" isotope-item class="kindling green">
-       <div class="name">extra</div>
+       <div class="symbol">extra</div>
        <div class="weight" date="1360613309421">{{'1360613309421' | date}}</div>
        <div class="number" number="4">4</div>
     </li>

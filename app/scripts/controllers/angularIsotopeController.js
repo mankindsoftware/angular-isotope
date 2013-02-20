@@ -7,7 +7,6 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 	, postInitialized = false
 	, isotopeContainer = null
 	, buffer = []
-	, setMode = "insert"
 	;
 	
 	$scope.$on(onLayoutEvent, function(event) {});
@@ -20,9 +19,15 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 		});
 	};
 
-	$scope.init = function($container) {
-		isotopeContainer = $container;
-		setMode = $container.attr("iso-set");
+	var initEventHandler = function(fun, evt, hnd) {
+		if (evt) fun.call($scope, evt, hnd);
+	};
+
+	$scope.init = function(isoInit) {
+		isotopeContainer = isoInit.element;
+		initEventHandler($scope.$on, isoInit.isoOptionsEvent, optionsHandler);
+		initEventHandler($scope.$on, isoInit.isoMethodEvent, methodHandler);
+
 		$timeout(
 				function() {
 					isotopeContainer.isotope(isotopeOptions);
@@ -68,14 +73,18 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 		}
 	};
  
-	$scope.$on('opt', function(event, option) {
+ var optionsHandler = function(event, option) {
 		$scope.updateOptions(option);
-	});
-	$scope.$on('method', function(event, option) {
+	};
+
+	var methodHandler = function(event, option) {
 		var fun = option.fun;
 		var params = option.params;
 		fun.apply(this, params);
-	});
+	};
+		
+	initEventHandler($scope.$on, 'iso-opts', optionsHandler);
+	initEventHandler($scope.$on, 'iso-method', methodHandler);
 });
 
 

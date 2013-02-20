@@ -1,4 +1,4 @@
-isotopeApp.controller('isoSortByData', function($scope) {
+ isotopeApp.controller('isoSortbyData', function($scope) {
 
   $scope.getHash = function(s) {
       return 'opt'+ s; // TODO: Replace non-key chars '.', '#', '[',']'
@@ -31,7 +31,6 @@ isotopeApp.controller('isoSortByData', function($scope) {
 
     var reduce = function(list) {
       var reduction = {};
-
       $.each(list, function (index, item) {
         $.extend(reduction, item);
       });
