@@ -38,7 +38,7 @@ angular.module('iso.directives')
 			var $element = $(element);
 
 			//$element.addClass(scope.isotopeOptions.itemClass);
-			scope.setIsoElement($element);
+			scope.setIsoElement($element, attrs.isoMode || "insert");
 
 			// Refresh after last element.
 			if (attrs.ngRepeat && true === scope.$last) {

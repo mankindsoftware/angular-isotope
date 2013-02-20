@@ -2,6 +2,19 @@
   <span>
     <h1>Angular Isotope Basic Example, featuring OptKind</h1>
   </span>
+  <div ng-init=
+      "xList=[
+      {name:'a', number:'1', date:'1360413309421', class:'purple'}
+      ,{name:'b', number:'5', date:'1360213309421', class:'orange'}
+      ,{name:'c', number:'10', date:'1360113309421', class:'blue'} 
+      ,{name:'d', number:'2', date:'1360113309421', class:'green'}
+      ,{name:'e', number:'6', date:'1350613309421', class:'green'}
+      ,{name:'f', number:'21', date:'1350613309421', class:'orange'}
+      ,{name:'g', number:'3', date:'1340613309421', class:'blue'}
+      ,{name:'h', number:'7', date:'1330613309001', class:'purple'}
+      ,{name:'i', number:'22', date:'1360412309421', class:'blue'}
+      ] ">
+  </div>
   <span id='options' class='option-combo'>
     <h3>Sort By</h3>
     <!-- iso-sortby-data must come before opt-kind -->
@@ -25,20 +38,21 @@
       </ul>
   </span>
   <div class="clearfix"/>
+  <span id='options' class='option-combo'>
+    <h3>Scripted Commands</h3>
+    <ul>
+      <script>
+        var addToList = function() {
+          var s=angular.element('#isotopeContainer').scope(); 
+          newItem={name:'add', number:'7', date:'1330613309001', class:'purple'};
+          s.$apply(s.xList.push(newItem)); 
+        }
+      </script>
+      <li><a onClick="addToList()">Add to List</a>
+    </ul>
+  <span>
+  <div class="clearfix"/>
   <h2></h2>
-  <div ng-init=
-      "xList=[
-      {name:'a', number:'1', date:'1360413309421', class:'purple'}
-      ,{name:'b', number:'5', date:'1360213309421', class:'orange'}
-      ,{name:'c', number:'10', date:'1360113309421', class:'blue'} 
-      ,{name:'d', number:'2', date:'1360113309421', class:'green'}
-      ,{name:'e', number:'6', date:'1350613309421', class:'green'}
-      ,{name:'f', number:'21', date:'1350613309421', class:'orange'}
-      ,{name:'g', number:'3', date:'1340613309421', class:'blue'}
-      ,{name:'h', number:'7', date:'1330613309001', class:'purple'}
-      ,{name:'i', number:'22', date:'1360412309421', class:'blue'}
-      ] ">
-  </div>
   <ul id="isotopeContainer" isotope-container iso-options-subscribe="my-iso-opts" iso-method-subscribe="my-iso-method">
     <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}">
        <div class="symbol">{{x.name}}</div>

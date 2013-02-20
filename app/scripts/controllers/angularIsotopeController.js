@@ -36,14 +36,9 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 		);
 	};
 
-	$scope.removeAll = function() {
-		isotopeContainer.isotope('remove',
-			isotopeContainer.data('isotope').$allAtoms);
-	};
-
-	$scope.setIsoElement = function($element) {
+	$scope.setIsoElement = function($element, mode) {
 		if (postInitialized) {
-			$timeout(function() {insertIsoElement($element);});
+			$timeout(function() {isotopeContainer.isotope("insert", $element);});
 		}
 	};
 
@@ -51,18 +46,6 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 		if (postInitialized) {
 			isotopeContainer.isotope();
 		}
-	};
-
-	$scope.refresh = function() {
-		isotopeContainer.isotope();
-	};
-
-	var insertIsoElement = function($element) {
-		return isotopeContainer.isotope("insert", $element);
-	};
-
-	$scope.addIsoElement = function($element) {
-		return isotopeContainer.isotope("addItems", $element);
 	};
 	
 	$scope.updateOptions = function(option) {
@@ -73,6 +56,7 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 		}
 	};
  
+ // Event handling.
  var optionsHandler = function(event, option) {
 		$scope.updateOptions(option);
 	};
@@ -80,11 +64,22 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 	var methodHandler = function(event, option) {
 		var fun = option.fun;
 		var params = option.params;
-		fun.apply(this, params);
+		fun.apply($scope, params);
 	};
 		
 	initEventHandler($scope.$on, 'iso-opts', optionsHandler);
 	initEventHandler($scope.$on, 'iso-method', methodHandler);
+
+	// Not used here.
+	$scope.removeAll = function() {
+		isotopeContainer.isotope('remove',
+			isotopeContainer.data('isotope').$allAtoms);
+	};
+
+	$scope.refresh = function() {
+		isotopeContainer.isotope();
+	};
+
 });
 
 
