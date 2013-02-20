@@ -14,7 +14,7 @@ angular.module('iso.directives')
         // Create alternate selector values
         methSet.each(function(index) {
           var $this = $(this);
-          $this.attr("opt-data-key", scope.getHash($this.attr("opt-sel")));
+          $this.attr("opt-sortby-key", scope.getHash($this.attr("opt-sel")));
         });
 
         // Create sort data table, mapping selector to how value is returned for comparison

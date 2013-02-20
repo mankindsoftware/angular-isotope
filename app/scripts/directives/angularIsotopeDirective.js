@@ -8,16 +8,16 @@ angular.module('iso.directives')
 			var $element = $(element)
 			, linkOptions = []
 			;
-			// If ui-options are passed, merge (or override) them onto global defaults and pass to the jQuery method
-			// if (attrs.isotopeOptions) {
-			//		linkOptions = scope.$eval('[' + attrs.isotopeOptions + ']');
-			//		if (angular.isObject(options) && angular.isObject(linkOptions[0])) {
-			//			linkOptions[0] = angular.extend({}, options, linkOptions[0]);
-			//		}
-			// }
 
-			// $element.addClass(linkOptions[0].containerClass);
-			scope.init($element, linkOptions[0]);
+			// If ui-options are passed, merge them onto global defaults.
+			if (attrs.isotopeOptions) {
+					linkOptions = scope.$eval('[' + attrs.isotopeOptions + ']');
+					if (angular.isObject(linkOptions[0])) {
+						scope.updateOptions(linkOptions[0]);
+					}
+			}
+
+			scope.init($element);
 			return element;
 		}
 	};

@@ -11,7 +11,7 @@ angular.module('iso.directives')
       ;
 
       var getValue = function(item) {
-        return item.attr('opt-data-key') || item.attr('opt-sel');
+        return item.attr('opt-sortby-key') || item.attr('opt-sel');
       };
 
       // Emit dynamically made option object, e.g. {filter:'.my-filter-class'}

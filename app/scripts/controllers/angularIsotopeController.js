@@ -37,38 +37,22 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 	};
 
 	$scope.setIsoElement = function($element) {
-		if (!postInitialized) { return; }
-		$timeout(function(setMode) {
-			switch (setMode) {
-				case 'add':
-					$scope.addIsoElement($element);
-					break;
-				case 'insert':
-					$scope.insertIsoElement($element);
-					break;
-				case 'buffer':
-					buffer.push($element.valueOf());
-					break;
-				default:
-					$timeout(function() {$scope.insertIsoElement($element);});
-			}
-		});
+		if (postInitialized) {
+			$timeout(function() {insertIsoElement($element);});
+		}
 	};
 
 	$scope.refreshIso = function() {
-		if (!postInitialized) { return; }
-		if (buffer.length) {
-				$scope.addIsoElement(buffer);
-				buffer = [];
+		if (postInitialized) {
+			isotopeContainer.isotope();
 		}
-		isotopeContainer.isotope();
 	};
 
 	$scope.refresh = function() {
 		isotopeContainer.isotope();
 	};
 
-	$scope.insertIsoElement = function($element) {
+	var insertIsoElement = function($element) {
 		return isotopeContainer.isotope("insert", $element);
 	};
 
@@ -87,11 +71,10 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 	$scope.$on('opt', function(event, option) {
 		$scope.updateOptions(option);
 	});
-	$scope.$on('opt.sortByMethods', function(event, option) {
-		$scope.updateOptions(option);
-	});
 	$scope.$on('method', function(event, option) {
-		$scope.updateOptions(option);
+		var fun = option.fun;
+		var params = option.params;
+		fun.apply(this, params);
 	});
 });
 
