@@ -5,8 +5,7 @@ angular.module('iso.directives')
 	var options = {};
 	return {
 		link: function(scope,element,attrs) {
-			var $element = $(element)
-			, linkOptions = []
+			var linkOptions = []
 			, isoOptions = attrs.isoOptions
 			, isoInit = {}
 			;
@@ -19,7 +18,7 @@ angular.module('iso.directives')
 					}
 			}
 
-			isoInit['element'] = $element;
+			isoInit['element'] = element;
 			isoInit['isoOptionsEvent'] = attrs.isoOptionsSubscribe;
 			isoInit['isoMethodEvent'] = attrs.isoMethodSubscribe;
 
