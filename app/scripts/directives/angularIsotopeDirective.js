@@ -4,6 +4,7 @@ angular.module('iso.directives')
 	'use strict';
 	var options = {};
 	return {
+		controller: angularIsotopeController,
 		link: function(scope,element,attrs) {
 			var linkOptions = []
 			, isoOptions = attrs.isoOptions
@@ -29,6 +30,7 @@ angular.module('iso.directives')
 }]);
 
 angular.module('iso.directives')
+
 .directive('isotopeItem', ['$timeout', function($timeout) {
 	return {
 		restrict: 'A',

@@ -1,7 +1,11 @@
- isotopeApp.controller('isoSortbyData', function($scope) {
+var isoSortByDataController = function($scope, optionsStore) {
 
   $scope.getHash = function(s) {
       return 'opt'+ s; // TODO: Replace non-key chars '.', '#', '[',']'
+  };
+
+  $scope.storeMethods = function(methods) {
+    optionsStore.store({getSortData: methods});
   };
 
   $scope.optSortData = function(item, index) {
@@ -72,5 +76,5 @@
       , val = toType(text, type);
       return evaluate ? evaluate(val) : val;
     };
-});
+};
 

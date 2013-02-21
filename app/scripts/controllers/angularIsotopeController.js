@@ -1,23 +1,22 @@
-
-isotopeApp.controller('MainCtrl', function($scope, $timeout) {
+var angularIsotopeController = function($scope, $timeout, optionsStore) {
 	'use strict';
 
 	var onLayoutEvent = "isotope.onLayout"
-	, isotopeOptions = {}
 	, postInitialized = false
 	, isotopeContainer = null
 	, buffer = []
 	;
 	
 	$scope.$on(onLayoutEvent, function(event) {});
-
-	isotopeOptions["onLayout"] = function($elems, instance) {
+	$scope.layoutEventEmit = function($elems, instance) {
 		$timeout(function() {
 			$scope.$apply(function() {
 				$scope.$emit(onLayoutEvent);
 			});
 		});
 	};
+
+	optionsStore.store({onLayout: $scope.layoutEventEmit});
 
 	var initEventHandler = function(fun, evt, hnd) {
 		if (evt) fun.call($scope, evt, hnd);
@@ -30,7 +29,7 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 
 		$timeout(
 				function() {
-					isotopeContainer.isotope(isotopeOptions);
+					isotopeContainer.isotope(optionsStore.retrieve());
 					postInitialized = true;
 				}
 		);
@@ -52,12 +51,12 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 		if (isotopeContainer) {
 			isotopeContainer.isotope(option);
 		} else {
-			isotopeOptions = $.extend.apply( null, [true, isotopeOptions].concat(option) );
+			optionsStore.store(option);
 		}
 	};
  
- // Event handling.
- var optionsHandler = function(event, option) {
+	// Event handling.
+	var optionsHandler = function(event, option) {
 		$scope.updateOptions(option);
 	};
 
@@ -66,7 +65,8 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 		var params = option.params;
 		fun.apply($scope, params);
 	};
-		
+	
+	// Defaults
 	initEventHandler($scope.$on, 'iso-opts', optionsHandler);
 	initEventHandler($scope.$on, 'iso-method', methodHandler);
 
@@ -80,7 +80,7 @@ isotopeApp.controller('MainCtrl', function($scope, $timeout) {
 		isotopeContainer.isotope();
 	};
 
-});
+};
 
 
 

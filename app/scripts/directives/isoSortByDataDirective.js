@@ -1,8 +1,10 @@
 angular.module('iso.directives')
-.directive('isoSortbyData', function() {
+
+.directive('isoSortbyData', function(optionsStore) {
   return {
     restrict: 'A'
-    , controller: "isoSortbyData"
+    , requires: angularIsotopeController
+    , controller: isoSortByDataController
     , replace: true
     , link: function(scope, element, attrs) {
       var optionSet = $(element)
@@ -19,8 +21,7 @@ angular.module('iso.directives')
 
         // Create sort data table, mapping selector to how value is returned for comparison
         var methods = scope.createSortByDataMethods(methSet);
-        options["getSortData"] = methods;
-        scope.$emit(optEvent, options);
+        scope.storeMethods(methods);
       }
     };
   });

@@ -11,7 +11,7 @@ module.exports = function( grunt ) {
     // ---------------------
     concat: {
       angiso: {
-        src: ['app/scripts/module.js', 'app/scripts/controllers/*.js'],
+        src: ['app/scripts/module.js', 'app/scripts/controllers/*.js', 'app/scripts/directives/*.js', 'app/scripts/services/*.js'],
         dest: 'app/scripts/vendor/angular-isotope.js'
       }
     },
