@@ -3,7 +3,6 @@ angular.module('iso.directives')
 .directive('isoSortbyData', function(optionsStore) {
   return {
     restrict: 'A'
-    , requires: angularIsotopeController
     , controller: isoSortByDataController
     , replace: true
     , link: function(scope, element, attrs) {

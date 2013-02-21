@@ -8,6 +8,7 @@ var angularIsotopeController = function($scope, $timeout, optionsStore) {
 	;
 	
 	$scope.$on(onLayoutEvent, function(event) {});
+
 	$scope.layoutEventEmit = function($elems, instance) {
 		$timeout(function() {
 			$scope.$apply(function() {
@@ -46,7 +47,7 @@ var angularIsotopeController = function($scope, $timeout, optionsStore) {
 			isotopeContainer.isotope();
 		}
 	};
-	
+
 	$scope.updateOptions = function(option) {
 		if (isotopeContainer) {
 			isotopeContainer.isotope(option);

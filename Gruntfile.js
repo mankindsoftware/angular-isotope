@@ -9,6 +9,12 @@ module.exports = function( grunt ) {
 
     // Project configuration
     // ---------------------
+    concat: {
+      angiso: {
+        src: ['app/scripts/module.js', 'app/scripts/controllers/*.js', 'app/scripts/directives/*.js', 'app/scripts/services/*.js'],
+        dest: 'app/scripts/vendor/angular-isotope.js'
+      }
+    },
 
     // specify an alternate install location for Bower
     bower: {
@@ -46,6 +52,10 @@ module.exports = function( grunt ) {
 
     // default watch configuration
     watch: {
+      concat: {
+        files: 'app/scripts/**/*.js',
+        tasks: 'concat reload'
+      },      
       coffee: {
         files: 'app/scripts/**/*.coffee',
         tasks: 'coffee reload'
