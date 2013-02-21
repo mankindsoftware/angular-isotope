@@ -44,7 +44,8 @@
       <script>
         var addToList = function() {
           var s=angular.element('#isotopeContainer').scope(); 
-          newItem={name:'add', number:'7', date:'1330613309001', class:'purple'};
+          s.count = s.count || 0;
+          newItem={name:'add', number:s.count--, date: Date.now(), class:'purple'};
           s.$apply(s.xList.push(newItem)); 
         }
       </script>
@@ -61,8 +62,13 @@
     </li>
     <li id="extra" isotope-item class="kindling green">
        <div class="symbol">extra</div>
-       <div class="weight" date="1360613309421">{{'1360613309421' | date}}</div>
-       <div class="number" number="4">4</div>
+       <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div>
+       <div class="number" number="20">Twenty</div>
+    </li>
+    <li id="extra" isotope-item class="kindling green">
+       <div class="symbol">extra</div>
+       <div class="weight" date="1310613309421">{{'1310613309421' | date}}</div>
+       <div class="number" number="9">Nine</div>
     </li>
   </ul>
 </div>
