@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: isotopeDirectives', function() {
-  beforeEach(module('isotopeApp'));
+  beforeEach(module('iso.directives'));
 
   var element;
 

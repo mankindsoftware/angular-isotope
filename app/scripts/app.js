@@ -1,4 +1,4 @@
-var isotopeApp = angular.module('isotopeApp', ['iso.directives']);
+ var isotopeApp = angular.module('isotopeApp', ['iso.directives']);
 
 isotopeApp.config(['$routeProvider', function($routeProvider) {
   'use strict';
