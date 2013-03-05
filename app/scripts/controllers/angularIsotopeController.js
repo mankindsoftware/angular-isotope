@@ -5,8 +5,10 @@ var angularIsotopeController = function($scope, $timeout, optionsStore) {
 	, postInitialized = false
 	, isotopeContainer = null
 	, buffer = []
+	, scope = ""
+	, isoMode = ""
 	;
-	
+
 	$scope.$on(onLayoutEvent, function(event) {});
 
 	$scope.layoutEventEmit = function($elems, instance) {
@@ -27,6 +29,7 @@ var angularIsotopeController = function($scope, $timeout, optionsStore) {
 		isotopeContainer = isoInit.element;
 		initEventHandler($scope.$on, isoInit.isoOptionsEvent, optionsHandler);
 		initEventHandler($scope.$on, isoInit.isoMethodEvent, methodHandler);
+		$scope.isoMode = isoInit.isoMode || "addItems";
 
 		$timeout(
 				function() {
@@ -36,9 +39,10 @@ var angularIsotopeController = function($scope, $timeout, optionsStore) {
 		);
 	};
 
-	$scope.setIsoElement = function($element, mode) {
+
+	$scope.setIsoElement = function($element) {
 		if (postInitialized) {
-			$timeout(function() {isotopeContainer.isotope("insert", $element);});
+			$timeout(function() {isotopeContainer.isotope($scope.isoMode, $element);});
 		}
 	};
 
@@ -55,7 +59,7 @@ var angularIsotopeController = function($scope, $timeout, optionsStore) {
 			optionsStore.store(option);
 		}
 	};
- 
+
 	// Event handling.
 	var optionsHandler = function(event, option) {
 		$scope.updateOptions(option);
@@ -66,15 +70,15 @@ var angularIsotopeController = function($scope, $timeout, optionsStore) {
 		var params = option.params;
 		fun.apply($scope, params);
 	};
-	
+
 	// Defaults
 	initEventHandler($scope.$on, 'iso-opts', optionsHandler);
 	initEventHandler($scope.$on, 'iso-method', methodHandler);
 
 	// Not used here.
-	$scope.removeAll = function() {
+	$scope.removeAll = function(cb) {
 		isotopeContainer.isotope('remove',
-			isotopeContainer.data('isotope').$allAtoms);
+			isotopeContainer.data('isotope').$allAtoms,cb);
 	};
 
 	$scope.refresh = function() {

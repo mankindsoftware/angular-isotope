@@ -22,6 +22,7 @@ angular.module('iso.directives')
 			isoInit['element'] = element;
 			isoInit['isoOptionsEvent'] = attrs.isoOptionsSubscribe;
 			isoInit['isoMethodEvent'] = attrs.isoMethodSubscribe;
+			isoInit['isoMode'] = attrs.isoMode;
 
 			scope.init(isoInit);
 			return element;
@@ -39,12 +40,12 @@ angular.module('iso.directives')
 			var $element = $(element);
 
 			//$element.addClass(scope.isotopeOptions.itemClass);
-			scope.setIsoElement($element, attrs.isoMode || "insert");
+			scope.setIsoElement($element);
 
 			// Refresh after last element.
-			if (attrs.ngRepeat && true === scope.$last) {
+			if (attrs.ngRepeat && true === scope.$last && "addItems" == scope.isoMode) {
 				element.ready(function () {
-					scope.refreshIso();
+					$timeout(function() {scope.refreshIso()});
 				});
 			}
 			return element;
