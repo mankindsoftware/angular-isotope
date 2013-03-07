@@ -156,15 +156,21 @@ var isoSortByDataController = function($scope, optionsStore) {
           return text;
       }
       , toType = function(text, type) {
-          var utility = {
+          var numCheck = function(val) {
+            return isNaN(val) ? Number.POSITIVE_INFINITY : val;
+          }
+          , utility = {
               text: function(s) {
                   return s.toString();
               }
               , integer: function(s) {
-                  return parseInt(s, 10);
+                  return numCheck(parseInt(s, 10));
               }
               , float: function(s) {
-                  return parseFloat(s);
+                  return numCheck(parseFloat(s));
+              }
+              , boolean: function(s) {
+                  return 'true' === s;
               }
           };
           return utility[type] ? utility[type](text) : text;
@@ -271,30 +277,32 @@ angular.module('iso.directives')
       var optionSet = $(element)
       , optPublish = attrs.optPublish || "opt-kind-opt"
       , optKey = optionSet.attr('opt-key')
+      , selected = optionSet.find('.selected')
+      , preSelectOptions = {}
       ;
 
-      var getValue = function(item) {
-        return item.attr('opt-sortby-key') || item.attr('opt-sel');
-      };
-
       // Emit dynamically made option object, e.g. {filter:'.my-filter-class'}
-      var emitOption = function(val) {
-        if (val) {
-          var option = {};
-          option[optKey] = val;
-          scope.$emit(optPublish, option);
+      var createOptions = function(item) {
+        if (item) {
+          var option = {}
+          , virtualSortByKey = item.attr('opt-sortby-key')
+          , ascAttr = item.attr('opt-ascending')
+          , key = virtualSortByKey || item.attr('opt-sel')
+          ;
+          if (virtualSortByKey) {
+            option['sortAscending'] = ascAttr ?  ascAttr === 'true' : true;
+          }
+          option[optKey] = key;
+
+          return option;
         }
-      };
-
-      // Initialize to selected values
-      emitOption(getValue(optionSet.find('.selected')));
-      
-      // Delegate click
-      optionSet.on('click', function(event) {
-        doOption(event);
-      });
-
-      function doOption(event) {
+      }
+      , emitOption = function(option) {
+        scope.preSelectOptions = $.extend.apply( null, [true, scope.preSelectOptions].concat(option) );
+        option['ok'] = scope.preSelectOptions;
+        scope.$emit(optPublish, option);
+      }
+      , doOption = function(event) {
         event.preventDefault();
 
         var selItem = $(event.target);
@@ -306,11 +314,22 @@ angular.module('iso.directives')
 
         optionSet.find('.selected').removeClass('selected');
         selItem.addClass('selected');
-  
-        emitOption(getValue(selItem));
+
+        emitOption(createOptions(selItem));
 
         return false;
       }
+      ;
+
+      // Initialize to selected values
+      if (selected.length) {
+        scope.preSelectOptions = createOptions(selected);
+      }
+
+      // Delegate click
+      optionSet.on('click', function(event) {
+        doOption(event);
+      });
     }
   };
 });

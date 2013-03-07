@@ -58,15 +58,21 @@ var isoSortByDataController = function($scope, optionsStore) {
           return text;
       }
       , toType = function(text, type) {
-          var utility = {
+          var numCheck = function(val) {
+            return isNaN(val) ? Number.POSITIVE_INFINITY : val;
+          }
+          , utility = {
               text: function(s) {
                   return s.toString();
               }
               , integer: function(s) {
-                  return parseInt(s, 10);
+                  return numCheck(parseInt(s, 10));
               }
               , float: function(s) {
-                  return parseFloat(s);
+                  return numCheck(parseFloat(s));
+              }
+              , boolean: function(s) {
+                  return 'true' === s;
               }
           };
           return utility[type] ? utility[type](text) : text;
