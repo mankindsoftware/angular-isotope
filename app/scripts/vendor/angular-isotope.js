@@ -109,8 +109,8 @@ var isoSortByDataController = function($scope, optionsStore) {
   $scope.optSortData = function(item, index) {
       var elementSortData = {}
       , $item = $(item)
-      , selector = $item.attr('opt-sel')
-      , type = $item.attr('opt-type')
+      , selector = $item.attr('ok-sel')
+      , type = $item.attr('ok-type')
       , sortKey = $scope.getHash(selector)
       , fun = $item.attr('opt-convert') ? eval('[' + $item.attr('opt-convert') + ']')[0] : null
       , genSortDataClosure = function(selector, type, convert) {
@@ -137,9 +137,8 @@ var isoSortByDataController = function($scope, optionsStore) {
         $.extend(reduction, item);
       });
       return reduction;
-    };
-
-    var getValue = function(selector, $elem, type, evaluate) {
+    }
+    , getValue = function(selector, $elem, type, evaluate) {
       var getText = function($elem, item, selector) {
           if (!item.length) {
               return $elem.text();
@@ -178,6 +177,7 @@ var isoSortByDataController = function($scope, optionsStore) {
       , item = $elem.find(selector)
       , text = getText($elem, item, selector)
       , val = toType(text, type);
+      
       return evaluate ? evaluate(val) : val;
     };
 };
@@ -248,15 +248,15 @@ angular.module('iso.directives')
     , replace: true
     , link: function(scope, element, attrs) {
       var optionSet = $(element)
-      , optKey = optionSet.attr('opt-key')
+      , optKey = optionSet.attr('ok-key')
       , optEvent = "iso-opts" // Not attr('opt-publish'), as this may not be instantiated.
       , options = {}
-      , methSet = optionSet.children().find("[opt-sel]")
+      , methSet = optionSet.children().find("[ok-sel]")
       ;
         // Create alternate selector values
         methSet.each(function(index) {
           var $this = $(this);
-          $this.attr("opt-sortby-key", scope.getHash($this.attr("opt-sel")));
+          $this.attr("ok-sortby-key", scope.getHash($this.attr("ok-sel")));
         });
 
         // Create sort data table, mapping selector to how value is returned for comparison
@@ -276,7 +276,7 @@ angular.module('iso.directives')
     , link: function(scope, element, attrs) {
       var optionSet = $(element)
       , optPublish = attrs.optPublish || "opt-kind-opt"
-      , optKey = optionSet.attr('opt-key')
+      , optKey = optionSet.attr('ok-key')
       , selected = optionSet.find('.selected')
       , preSelectOptions = {}
       ;
@@ -285,9 +285,9 @@ angular.module('iso.directives')
       var createOptions = function(item) {
         if (item) {
           var option = {}
-          , virtualSortByKey = item.attr('opt-sortby-key')
+          , virtualSortByKey = item.attr('ok-sortby-key')
           , ascAttr = item.attr('opt-ascending')
-          , key = virtualSortByKey || item.attr('opt-sel')
+          , key = virtualSortByKey || item.attr('ok-sel')
           ;
           if (virtualSortByKey) {
             option['sortAscending'] = ascAttr ?  ascAttr === 'true' : true;

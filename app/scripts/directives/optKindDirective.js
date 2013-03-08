@@ -6,8 +6,8 @@ angular.module('iso.directives')
     , replace: true
     , link: function(scope, element, attrs) {
       var optionSet = $(element)
-      , optPublish = attrs.optPublish || "opt-kind-opt"
-      , optKey = optionSet.attr('opt-key')
+      , optPublish = attrs.optPublish || "opt-kind"
+      , optKey = optionSet.attr('ok-key')
       , selected = optionSet.find('.selected')
       , preSelectOptions = {}
       ;
@@ -16,9 +16,9 @@ angular.module('iso.directives')
       var createOptions = function(item) {
         if (item) {
           var option = {}
-          , virtualSortByKey = item.attr('opt-sortby-key')
+          , virtualSortByKey = item.attr('ok-sortby-key')
           , ascAttr = item.attr('opt-ascending')
-          , key = virtualSortByKey || item.attr('opt-sel')
+          , key = virtualSortByKey || item.attr('ok-sel')
           ;
           if (virtualSortByKey) {
             option['sortAscending'] = ascAttr ?  ascAttr === 'true' : true;

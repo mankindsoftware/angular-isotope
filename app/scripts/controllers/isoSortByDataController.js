@@ -11,8 +11,8 @@ var isoSortByDataController = function($scope, optionsStore) {
   $scope.optSortData = function(item, index) {
       var elementSortData = {}
       , $item = $(item)
-      , selector = $item.attr('opt-sel')
-      , type = $item.attr('opt-type')
+      , selector = $item.attr('ok-sel')
+      , type = $item.attr('ok-type')
       , sortKey = $scope.getHash(selector)
       , fun = $item.attr('opt-convert') ? eval('[' + $item.attr('opt-convert') + ']')[0] : null
       , genSortDataClosure = function(selector, type, convert) {
@@ -39,9 +39,8 @@ var isoSortByDataController = function($scope, optionsStore) {
         $.extend(reduction, item);
       });
       return reduction;
-    };
-
-    var getValue = function(selector, $elem, type, evaluate) {
+    }
+    , getValue = function(selector, $elem, type, evaluate) {
       var getText = function($elem, item, selector) {
           if (!item.length) {
               return $elem.text();
@@ -80,6 +79,7 @@ var isoSortByDataController = function($scope, optionsStore) {
       , item = $elem.find(selector)
       , text = getText($elem, item, selector)
       , val = toType(text, type);
+      
       return evaluate ? evaluate(val) : val;
     };
 };
