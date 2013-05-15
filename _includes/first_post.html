@@ -1,0 +1,20 @@
+<!--{% assign first_post = site.posts.first %}
+<div class="container">
+	<div class="marketing">
+		<div class="content">	
+			<div class="row">
+				<div class="span10 columns">{{ first_post.date | date: "%B %e, %Y" }}</div>
+			</div>
+			<div class="row">	
+				<div class="span4 columns">
+					<a href="{{ first_post.url }}"><img border="0" width="400" height="250" src="/img/posts/{{ first_post.image }}" /></a>
+				</div>
+				<div class="span7 columns">						
+					<h1><a href="{{ first_post.url }}">{{ first_post.title }}</a></h1>
+					<i>{{ first_post.summary }}</i>
+					<p><h5><small>Category: {{ first_post.category }} . Tags: {% for tag in first_post.tags %} <a href="/tags/{{ tag }}" rel="tooltip" title="View posts tagged with &quot;{{ tag }}&quot;">{{ tag }}</a>  {% if forloop.last != true %} {% endif %} {% endfor %} . <a href="http://erjjones.github.com{{first_post.url }}#disqus_thread" data-disqus-identifier="{{ first_post.url }}"></a></small></h5></p>															
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>-->

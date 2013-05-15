@@ -1,0 +1,8 @@
+<footer class="footer">
+  <div class="container">
+	<p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&laquo; Previous Blog Post</a> 	{% endif %}  |  <a href="#">Back to top</a>  |  {% if page.next.url %} 	<a href="{{page.next.url}}" title="Next Post: {{page.next.title}}">Next Blog Post &raquo; </a> 	{% endif %} </p>        
+	<p>Page last generated on {{ site.time | date: "%B %e, %Y" }}</p>
+	<p>If need be, <a href="https://github.com/erjjones/Feedback/issues/new" title="Leave feedback for Eric"  target="_blank" >leave me some feedback</a>.</p>	
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+  </div>
+</footer>

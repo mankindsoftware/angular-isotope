@@ -1,0 +1,36 @@
+<script type="text/javascript">
+		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		var disqus_shortname = 'ericjones'; // required: replace example with your forum shortname
+		var disqus_identifier = '{{ page.url }}';
+		var disqus_url = 'http://erjjones.github.com{{ page.url }}';
+
+		/* * * DON'T EDIT BELOW THIS LINE * * */
+		(function () {
+			var s = document.createElement('script'); s.async = true;
+			s.type = 'text/javascript';
+			s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+		}());
+	</script>
+	
+<div class="row">	
+	<div class="span9 column">
+		<p><h1>{{ page.title }}</h1></p>	
+	</div>
+</div>		
+<div class="row">	
+	<div class="span3 column">
+		<h5><strong>{{ page.date | date: "%B %e, %Y" }} <small>. {{ page.category }} . <a href="http://erjjones.github.com{{ page.url }}#disqus_thread" data-disqus-identifier="{{ page.url }}">Comments</a></small></strong>
+		<br/><small>Tags: {% for tag in page.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small><br/><br/>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-via="erjjones">Tweet</a> <g:plusone size="medium"></g:plusone></h5>
+	</div>		
+	<div class="span6 column">
+		<p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}"><i class="icon-chevron-left"></i></a> 	{% endif %}   {% if page.next.url %} 	<a href="{{page.next.url}}" title="Next Post: {{page.next.title}}"><i class="icon-chevron-right"></i></a> 	{% endif %} </p>  
+	</div>	
+</div>
+<div class="row">
+	<div class="span9 column">
+		<hr>
+	</div>
+</div>
+
