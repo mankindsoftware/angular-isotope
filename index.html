@@ -1,10 +1,24 @@
 ---
 layout: layout
-title: "Eric Jones"
+title: "Angular-Isotope"
 ---
+<header>
+  <h1 class="header">Angular-Isotope</h1>
+  <p class="header">AngularJS directives for JQuery Isotope.</p>
+
+  <ul>
+    <li class="download"><a class="buttons" href="https://github.com/mankindsoftware/angular-isotope/zipball/master">Download ZIP</a></li>
+    <li class="download"><a class="buttons" href="https://github.com/mankindsoftware/angular-isotope/tarball/master">Download TAR</a></li>
+    <li><a class="buttons github" href="https://github.com/mankindsoftware/angular-isotope">View On GitHub</a></li>
+  </ul>
+
+  <p class="header">This project is maintained by <a class="header name" href="https://github.com/mankindsoftware">mankindsoftware</a></p>
+
+
+</header>
 {% for post in site.posts offset: 0 limit: 50 %}
 <div class="row">
-  <div class="span7">    
+  <div class="span7">
     <div class="row">
       <div class="span2">
         <a href="{{ post.url }}" >
@@ -12,20 +26,20 @@ title: "Eric Jones"
         </a>
       </div>
       <div class="span5">
-		<h4><strong><a href="{{ post.url }}">{{ post.title }}</a></strong></h4>      
+		<h4><strong><a href="{{ post.url }}">{{ post.title }}</a></strong></h4>
         <p>
           {{ post.summary }}
         </p>
 		<p>
           <i class="icon-calendar"></i> {{ post.date | date: "%B %e, %Y" }}
-          | <i class="icon-comment"></i> <a href="http://erjjones.github.com{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}"></a>     
-		  | <i class="icon-tags"></i> Tags :{% for tag in post.tags %} <a href="/tags/{{ tag }}" rel="tooltip" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="label label-info">{{ tag }}</span></a>  {% if forloop.last != true %} {% endif %} {% endfor %}		            
+          | <i class="icon-comment"></i> <a href="http://erjjones.github.com{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}"></a>
+		  | <i class="icon-tags"></i> Tags :{% for tag in post.tags %} <a href="/tags/{{ tag }}" rel="tooltip" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="label label-info">{{ tag }}</span></a>  {% if forloop.last != true %} {% endif %} {% endfor %}
         </p>
         <p><a href="{{ post.url }}">Read more</a></p>
       </div>
-    </div>    
+    </div>
 	<hr>
   </div>
 </div>
-{% endfor %}	
-			
+{% endfor %}
+
