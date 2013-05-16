@@ -14,10 +14,10 @@ image: post_two.jpg
 <div class="row">
 	<div class="span9 columns">
 	  <h2>Preface</h2>
-	  <p>This is a follow up from my last post <a href="http://erjjones.github.com/blog/How-I-built-my-blog-in-one-day/" title="Go to How I built my blog in one day"><i>How I built my blog in one day</i></a>.  There were several items I left out and several more that I have refined.  This blog still only begins to scratch the surface on what someone can do with Jekyll and bootstraping other technologies, so please comment and share your ideas.</p>  	 	  
-	  <p><a href="https://github.com/erjjones/erjjones.github.com/zipball/master" class="btn btn-info">Download source</a></p>
-	  <hr>	  
-	  <h2>Jekyll</h2>	  
+	  <p>This is a follow up from my last post <a href="http://github.com/mankindsoftware/blog/How-I-built-my-blog-in-one-day/" title="Go to How I built my blog in one day"><i>How I built my blog in one day</i></a>.  There were several items I left out and several more that I have refined.  This blog still only begins to scratch the surface on what someone can do with Jekyll and bootstraping other technologies, so please comment and share your ideas.</p>
+	  <p><a href="https://github.com/erjjones/github.com/mankindsoftware/zipball/master" class="btn btn-info">Download source</a></p>
+	  <hr>
+	  <h2>Jekyll</h2>
 	  <h2><small>Post Configuration</small></h2>
 	  <p><a href="http://jekyllrb.com/" title="Go to Jekyll" target="_blank">Jekyll</a> provides various configuration attributes that you can specify on your post to use those value/pairs later with referring back to a post or iterating through your posts (aka <a href="http://yaml.org/" title="Go to YAML.org" target="_blank">YAML</a> Front-Matter).  I have added several new post properties: year, date, day, tags, published, summary.  For more information about what each property is and how it works <a href="https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter" title="Go to the Jekyll docs" target="_blank">view the Jekyll documentation</a>.</p>
 	  <script src="https://gist.github.com/2155346.js"> </script>
@@ -27,24 +27,24 @@ image: post_two.jpg
 		<li><stron>tag_gen.rb</strong> - Create this in the _plugins folder</li>
 		<li><stron>tag_index.html</strong> - Create this in the _layouts folder</li>
 	  </ul>
-	  <p><strong>tag_gen.rb</strong> is a Jekyll module that will create the static web pages that will list the posts affiliated with the tag.</p>	  
-	  <script src="https://gist.github.com/2155135.js"></script>	  
+	  <p><strong>tag_gen.rb</strong> is a Jekyll module that will create the static web pages that will list the posts affiliated with the tag.</p>
+	  <script src="https://gist.github.com/2155135.js"></script>
 	  <br/>
-	  <p><strong>tag_index.html</strong> is a Jekyll layout that will display the posts on the tag page.</p>	  
+	  <p><strong>tag_index.html</strong> is a Jekyll layout that will display the posts on the tag page.</p>
 	  <script src="https://gist.github.com/2155150.js"></script>
 	  <br/>
-	  <p><strong>Generate the tag pages</strong> - The Jekyll module tag_gen.rb will generate a "tags" folder in the "_site" directory.  The module will also generate subfolders for each tag listed on the posts.  If you add new tags you'll have to build again or stop and start your Jekyll server. For GitHub user pages you will want to copy the "tags" folder from the "_site" folder into the root folder inline with "_site".  See <a href="https://github.com/erjjones/erjjones.github.com" title="Go to https://github.com/erjjones/erjjones.github.com" target="_blank">my GitHub user page repo</a> layout to understand more.</p>	  
+	  <p><strong>Generate the tag pages</strong> - The Jekyll module tag_gen.rb will generate a "tags" folder in the "_site" directory.  The module will also generate subfolders for each tag listed on the posts.  If you add new tags you'll have to build again or stop and start your Jekyll server. For GitHub user pages you will want to copy the "tags" folder from the "_site" folder into the root folder inline with "_site".  See <a href="https://github.com/erjjones/github.com/mankindsoftware" title="Go to https://github.com/erjjones/github.com/mankindsoftware" target="_blank">my GitHub user page repo</a> layout to understand more.</p>
 	  <h2><small>Tag Lists</small></h2>
-	  <p>List all tags within your site.</p>	  
+	  <p>List all tags within your site.</p>
 	  <ul>
-		{% for tag in site.tags %}		
+		{% for tag in site.tags %}
 			<li><a href="/tags/{{ tag[0] }}">{{ tag[0] }}</a></li>
 		{% endfor %}
 	  </ul>
 	  <script src="https://gist.github.com/2155275.js"></script>
-	  <p>List all tags for a post.</p>	  
+	  <p>List all tags for a post.</p>
 	  <p><small><i class="icon-tags"></i> {% for tag in page.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small></p>
-	  <script src="https://gist.github.com/2155281.js"></script>	  
+	  <script src="https://gist.github.com/2155281.js"></script>
 	  <hr>
 	  <h2>Disqus</h2>
 	  <h2><small>Issues fixed</small></h2>
@@ -54,9 +54,9 @@ image: post_two.jpg
 		<li>In the link I had forgotten to include the data-disqus-identifier and set it to the page url.</li>
 	  </ol>
 	  <script src="https://gist.github.com/2026102.js"> </script>
-	  <hr>	  
+	  <hr>
 	  <h2>RSS Feed</h2>
-	  <p>Initially when using a GitHub user page I thought that I could use <code>https://github.com/erjjones.atom</code> to hook up my RSS feed on <a href="http://feedburner.google.com" title="Go to feedburner.google.com">feed burner</a>, but I had a hard time getting Feed Burner to register it.  I noticed on <a href="http://zachholman.com/" title="Go to Zach Holmans site">Zach Holman's</a> user page he had a <code>atom.xml</code> file and after further review you see that it is configured to register exactly what I needed to setup the RSS feed.  Save this file to the root directory of your site and then you can register something like <code>http://erjjones.github.com/atom.xml</code> to feed burner and now you have an RSS feed for your blog.</p>
+	  <p>Initially when using a GitHub user page I thought that I could use <code>https://github.com/erjjones.atom</code> to hook up my RSS feed on <a href="http://feedburner.google.com" title="Go to feedburner.google.com">feed burner</a>, but I had a hard time getting Feed Burner to register it.  I noticed on <a href="http://zachholman.com/" title="Go to Zach Holmans site">Zach Holman's</a> user page he had a <code>atom.xml</code> file and after further review you see that it is configured to register exactly what I needed to setup the RSS feed.  Save this file to the root directory of your site and then you can register something like <code>http://github.com/mankindsoftware/atom.xml</code> to feed burner and now you have an RSS feed for your blog.</p>
 	  <script src="https://gist.github.com/2026283.js"></script>
 	  <hr>
 	  <h2>README (.md)</h2>
@@ -72,29 +72,29 @@ image: post_two.jpg
 	  </ul>
 	  <hr>
 	  <h2>In Conclusion</h2>
-	  <p>Again, I hope this sparks you to try out GitHub, Jekyll, Twitter Bootstrap and other open source web resources.  I have just begun to scratch the surface here and this blog doesn't attempt to cover all of details but I would like to hear what other cool integrations people are doing on their blogs.</p>	  
+	  <p>Again, I hope this sparks you to try out GitHub, Jekyll, Twitter Bootstrap and other open source web resources.  I have just begun to scratch the surface here and this blog doesn't attempt to cover all of details but I would like to hear what other cool integrations people are doing on their blogs.</p>
 	  <hr>
 	</div>
-</div> 
+</div>
 
 <div class="row">
 	<div class="span3 columns">&nbsp;</div>
 	<div class="span6 column">
-			<p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}"><i class="icon-chevron-left"></i></a> 	{% endif %}   {% if page.next.url %} 	<a href="{{page.next.url}}" title="Next Post: {{page.next.title}}"><i class="icon-chevron-right"></i></a> 	{% endif %} </p>  
+			<p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}"><i class="icon-chevron-left"></i></a> 	{% endif %}   {% if page.next.url %} 	<a href="{{page.next.url}}" title="Next Post: {{page.next.title}}"><i class="icon-chevron-right"></i></a> 	{% endif %} </p>
 	</div>
 </div>
-	
+
 <div class="row">
-	<div class="span9 columns">    
+	<div class="span9 columns">
 		<h2>Comments Section</h2>
-	    <p>Feel free to comment on the post but keep it clean and on topic.</p>	
+	    <p>Feel free to comment on the post but keep it clean and on topic.</p>
 		<div id="disqus_thread"></div>
 		<script type="text/javascript">
 			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 			var disqus_shortname = 'ericjones'; // required: replace example with your forum shortname
 			var disqus_identifier = '{{ page.url }}';
-			var disqus_url = 'http://erjjones.github.com{{ page.url }}';
-			
+			var disqus_url = 'http://github.com/mankindsoftware{{ page.url }}';
+
 			/* * * DON'T EDIT BELOW THIS LINE * * */
 			(function() {
 				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

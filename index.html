@@ -18,7 +18,7 @@ title: "Angular-Isotope"
         </p>
 		<p>
           <i class="icon-calendar"></i> {{ post.date | date: "%B %e, %Y" }}
-          | <i class="icon-comment"></i> <a href="http://erjjones.github.com{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}"></a>
+          | <i class="icon-comment"></i> <a href="http://github.com/mankindsoftware{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}"></a>
 		  | <i class="icon-tags"></i> Tags :{% for tag in post.tags %} <a href="/tags/{{ tag }}" rel="tooltip" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="label label-info">{{ tag }}</span></a>  {% if forloop.last != true %} {% endif %} {% endfor %}
         </p>
         <p><a href="{{ post.url }}">Read more</a></p>

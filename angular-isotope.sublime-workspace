@@ -1,0 +1,541 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"con",
+				"console"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"co",
+				"console"
+			],
+			[
+				"buy",
+				"buy"
+			],
+			[
+				"cat",
+				"categorized"
+			],
+			[
+				"table",
+				"tableify"
+			],
+			[
+				"ca",
+				"categorization"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/User/yeoman.sublime-build",
+	"command_palette":
+	{
+		"height": 311.0,
+		"selected_items":
+		[
+			[
+				"pa li",
+				"Package Control: List Packages"
+			],
+			[
+				"f",
+				"Fetch: Package"
+			],
+			[
+				"F",
+				"Fetch: Package"
+			],
+			[
+				"FETCH: P",
+				"Fetch: Package"
+			],
+			[
+				"browse P",
+				"Preferences: Browse Packages"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"copy s",
+				"File: Copy as Tag script"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Fetch: Manage"
+			],
+			[
+				"pack",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"p",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"pre",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pac",
+				"Fetch: Package"
+			],
+			[
+				"package ",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"mini",
+				"View: Toggle Minimap"
+			],
+			[
+				"min",
+				"View: Toggle Minimap"
+			],
+			[
+				"kb",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 146.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/html5/css/style.css",
+		"/C/xampp/htdocs/html5/index.php",
+		"/C/xampp/htdocs/html5/people/mark-allen-hall/resume/mark-allen-hall-phd.htm",
+		"/C/xampp/htdocs/html5/dissertation.php",
+		"/C/xampp/htdocs/html5/people/mark-allen-hall/portfolio/portfolio.php",
+		"/C/xampp/htdocs/html5/css/jquery.metro.css.orig.css",
+		"/C/xampp/htdocs/about/index.php",
+		"/C/Users/Mark/WebRTComm/webrtcomm/doc/WebRTComm/index.html",
+		"/C/Users/Mark/WebRTComm/webrtcomm/src/WebRTComm/WebRTCommCall.js",
+		"/C/xampp/apache/conf/httpd.conf",
+		"/C/xampp/htdocs/about/crossdomain.xml",
+		"/C/xampp/htdocs/about/.htaccess",
+		"/C/Users/Mark/Documents/My Web Sites/Mankind/htdocs/.htaccess",
+		"/C/Users/Mark/Documents/My Web Sites/Mankind/htdocs/index.php",
+		"/C/Users/Mark/Documents/My Web Sites/Mankind/htdocs/T.html",
+		"/C/Users/Mark/Documents/Resumes/Mark Allen Hall 2013.txt",
+		"/C/Users/Mark/Documents/My Web Sites/Mankind/htdocs/.htaccess041912",
+		"/C/Users/Mark/yeoman/angular-isotope/app/scripts/directives/optKindDirective.js",
+		"/C/Users/Mark/yeoman/angular-isotope/app/views/main.html",
+		"/C/Portable Apps/file_id.diz",
+		"/C/Users/Mark/Downloads/apktool-install-windows-r05-ibot/apktool.bat",
+		"/C/Users/Mark/apktool/apktool.bat",
+		"/C/Users/Mark/Documents/My Web Sites/Mankind/htdocs/.htaccess030912",
+		"/C/Users/Mark/yeoman/angular-isotope/app/scripts/directives/isoSortByDataDirective.js",
+		"/C/Users/Mark/yeoman/angular-isotope/app/scripts/directives/angularIsotopeDirective.js",
+		"/C/Users/Mark/yeoman/angular-isotope/app/scripts/controllers/isoSortByDataController.js",
+		"/C/Users/Mark/yeoman/angular-isotope/Gruntfile.js",
+		"/C/Users/Mark/yeoman/angular-isotope/grunt.js",
+		"/C/Users/Mark/yeoman/angular-isotope/angular-isotope.sublime-workspace",
+		"/C/Users/Mark/yp.bat",
+		"/E/LOST.DIR/83950",
+		"/E/LOST.DIR/33720",
+		"/C/Users/Mark/yeoman/angular-isotope/README.md",
+		"/C/Users/Mark/yeoman/angular-isotope/app/scripts/controllers/angularIsotopeController.js",
+		"/C/Users/Mark/yeoman/angular-isotope/app/styles/main.scss",
+		"/C/Users/Mark/yeoman/angular-isotope/app/index.html",
+		"/C/Users/Mark/yeoman/angular-isotope/README",
+		"/C/Users/Mark/git/jquery/README.markdown",
+		"/C/Users/Mark/git/jQ.Mobi/README.md",
+		"/C/Users/Mark/callback-phonegap-0d1f305/README.md",
+		"/C/Users/Mark/MankindPersonals/demo/public/js/ng/mk/dm/services.js",
+		"/C/Users/Mark/MankindPersonals/demo/public/js/ng/mk/dm/directives.js",
+		"/C/Users/Mark/MankindPersonals/demo/views/demo/partials/personals-page.jade",
+		"/C/Users/Mark/MankindPersonals/demo/start.sh",
+		"/C/Users/Mark/MankindPersonals/demo/public/js/ng/mk/dm/app.js",
+		"/C/Users/Mark/MankindPersonals/demo/public/js/ng/mk/dm/controllers.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/views/main.html",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/controllers/fileController.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/directives/tileDirective.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/directives/fileDirective.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/app.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/services/fileReaderService.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/components/isotope/jquery.isotope.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/module.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/controllers/main.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/controllers/tileController.js",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/components/isotope/css/style.css",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/styles/main.css",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/index.html",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/views/csv.html",
+		"/C/Users/Mark/Documents/GitHub/tilescape/app/scripts/vendor/jquery-csv/mkfile.js",
+		"/C/Users/Mark/yeomantests/isotope/dist/manifest.appcache",
+		"/C/Users/Mark/yeomantests/isotope/Gruntfile.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/angularIsotopeDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/angularIsotopeController.js",
+		"/C/Users/Mark/yeomantests/isotope/app/views/main.html",
+		"/C/Users/Mark/Documents/My Web Sites/Mankind/htdocs/index.shtml",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/optKindDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/app/styles/main.scss",
+		"/C/Users/Mark/yeomantests/isotope/app/index.html",
+		"/C/Users/Mark/yeomantests/isotope/dist/scripts/81cff653.module.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/isoSortByDataController.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/isoSortByDataDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/dist/index.html",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/kindOptsDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/app.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/module.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/services/stub.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/isoSortData.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/kindOptsController.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/isotSortDataDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/isoGetSortDataDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/isoSortByDataDirective",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/kindOpts.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/angular-isotope.js",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/User/JavaScript.sublime-settings",
+		"/C/Users/Mark/yeomantests/isotope/app/styles/main.css",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/angular-isotopeDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/test/spec/controllers/kindOpts.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/vendor/angular.js",
+		"/C/Users/Mark/yeomantests/isotope/test/spec/directives/angular-isotopeDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/angular-isotopeDirectives.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/isotopeDirectives.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/main.js",
+		"/C/Users/Mark/yeomantests/isotope/test/spec/controllers/mankOptions.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/mankOptions.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/directives/mankOptionsDirective.js",
+		"/C/Users/Mark/yeomantests/isotope/components/isotope/css/style.css",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/common.js",
+		"/C/Users/Mark/yeomantests/isotope/package.json",
+		"/C/Users/Mark/yeomantests/isotope/dist/scripts/f0fb1aaa.scripts.js",
+		"/C/Users/Mark/yeomantests/isotope/app/scripts/controllers/mankOptionsController.js",
+		"/C/Users/Mark/yeomantests/isotope/testacular.conf.js",
+		"/C/Users/Mark/Documents/GitHub/demo/views/demo/demo.jade",
+		"/C/Users/Mark/Documents/GitHub/demo/views/demo/partials/home-page-call.jade",
+		"/C/Users/Mark/Documents/GitHub/demo/views/demo/partials/home.jade",
+		"/C/Users/Mark/Documents/GitHub/demo/views/demo/partials/home-page.jade",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/User/LiveReload.sublime-settings",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/LiveReload/LiveReload.sublime-settings",
+		"/C/Users/Mark/Documents/Sites/test/test.js",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/User/Fetch.sublime-settings",
+		"/C/Users/Mark/Documents/Sites/test/index.html",
+		"/C/Users/Mark/Documents/Sites/test/css/normalize.css",
+		"/C/Users/Mark/Documents/Sites/test/css/main.css",
+		"/C/Users/Mark/Documents/Sites/test/doc/faq.md",
+		"/C/Users/Mark/Documents/Sites/test/js/vendor/jquery-1.9.0.min.js",
+		"/C/Users/Mark/Documents/Sites/test/js/vendor/modernizr-2.6.2.min.js",
+		"/C/Users/Mark/Documents/Sites/test/js/plugins.js",
+		"/C/Users/Mark/Documents/Sites/test/crossdomain.xml",
+		"/C/Users/Mark/Documents/GitHub/demo/public/js/ng/mk/dm/directives.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<project>",
+			"C:\\Users\\Mark\\yeomantests\\isotope",
+			"<project>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"<?",
+			"%",
+			"overflow",
+			"# ",
+			"opt-type",
+			"opt-sel",
+			"opt-sortby-key",
+			"opt-key",
+			"opt-",
+			"ok",
+			"opt-kind",
+			"personals",
+			"console.log",
+			"CraigsListController",
+			"defaultOptionMenu",
+			"//",
+			"isoMailCtrl",
+			"isotopeInit",
+			"  <",
+			"mode",
+			"FileCtrl",
+			"tscape",
+			"directive",
+			"file",
+			"mkFile",
+			"popover",
+			"iso",
+			"fileDirective",
+			"FileControllerCtrl",
+			"init",
+			"          \n",
+			"optEvent",
+			"event",
+			"opt-event",
+			"setMode",
+			"kind-opts",
+			"kind",
+			"kind-opts",
+			"red",
+			"pink",
+			"opt-data-key",
+			"$apply",
+			"scope.apply",
+			"SortBy",
+			"initialized",
+			"timeout",
+			"init",
+			"true",
+			"sortData",
+			"SortData",
+			"sortData",
+			"elementSortData",
+			"elem",
+			"emit",
+			"optionSet",
+			"createSortByDataMethods",
+			"data-key",
+			"meth",
+			"key",
+			"opt-meth",
+			"opt-val",
+			"eval",
+			"comma",
+			"isotopeOptions",
+			"val = initSelected.attr(sel);",
+			"first",
+			"initSelected",
+			"first",
+			"hash",
+			"opt-val",
+			"$scope.isotopeContainer",
+			"isotopeContainer",
+			"scope",
+			"$scope.isotopeContainer",
+			"init",
+			"$scope.init",
+			"initialized",
+			"$scope.isotopeOptions",
+			"alkali",
+			"}",
+			"_optKey",
+			"_optEvent",
+			"iv",
+			">",
+			"h3",
+			"h1",
+			".element",
+			"streep",
+			"convert",
+			"getTypedText",
+			"makeHash",
+			"generateSortDataKey",
+			"sel",
+			"href=\"#\"",
+			"refreshIsoOptions",
+			"emit",
+			"data-filter",
+			"mankOptionsDirective",
+			"mankOptionsCtrl",
+			"filter",
+			"convert",
+			"isotopeOptions",
+			"parse",
+			"conver",
+			"optEvent",
+			"eventType",
+			"options",
+			"\n",
+			"detect_",
+			"class='option-combo clearfix'",
+			"combo",
+			"createSortData",
+			"timeout",
+			"date",
+			"textItem",
+			"text.",
+			"textItem",
+			"itemText",
+			"MainCtrl",
+			"defaultIsotopeOptions",
+			"strap",
+			"$strap",
+			"strap",
+			"\n        ",
+			"scripts/*",
+			"		text:function(s) {\n					return s;\n				}\n			, date: function(s) {\n				return s;//parseDate(s);\n			}\n			, number: function(s) {\n				return parseInt(s);\n			}\n			, integer: function(s) {\n				return parseInt(s);\n			}\n			, currency: function(s) {\n				alert(\"HERE\");\n				return s;\n",
+			" = ",
+			"getName"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"kindOptsController",
+			"mnkndDirectives"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"filectrl",
+				"app/scripts/controllers/fileController.js"
+			],
+			[
+				"isotopecss",
+				"components/isotope/css/style.css"
+			],
+			[
+				"scripts.js",
+				"dist/scripts/f0fb1aaa.scripts.js"
+			],
+			[
+				"",
+				"/C/Users/Mark/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings"
+			],
+			[
+				"nom",
+				"css/normalize.css"
+			],
+			[
+				"norm",
+				"css/normalize.css"
+			],
+			[
+				".css",
+				"css/normalize.css"
+			],
+			[
+				"jq",
+				"js/vendor/jquery-1.9.0.min.js"
+			],
+			[
+				"faq",
+				"doc/faq.md"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/Mark/yeoman/personals/personals.sublime-project"
+			],
+			[
+				"gi",
+				"/C/Users/Mark/Documents/GitHub/github.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 276.0,
+	"status_bar_visible": true
+}
