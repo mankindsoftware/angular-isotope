@@ -6,7 +6,7 @@ tags: dotnet
 year: 2012
 month: 7
 day: 17
-published: true
+published: false
 summary: You do it once in a blue moon so here is a reminder for how to sign that third party assembly you added.
 image: post_three.jpg
 ---

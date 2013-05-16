@@ -6,7 +6,7 @@ tags: jekyll github rss
 year: 2012
 month: 3
 day: 22
-published: true
+published: false
 summary: A follow up post on how I built my blog
 image: post_two.jpg
 ---

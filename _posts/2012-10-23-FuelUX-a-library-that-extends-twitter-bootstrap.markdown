@@ -6,7 +6,7 @@ tags: fuelux jquery bootstrap requirejs grunt amd
 year: 2012
 month: 10
 day: 23
-published: true
+published: false
 summary: Fuel UX extends Twitter Bootstrap with additional lightweight JavaScript controls for your web application. 
 image: post_four.png
 ---
