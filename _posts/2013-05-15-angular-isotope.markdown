@@ -10,7 +10,7 @@ published: true
 summary: Angular Isotope
 image: jquery-isotope.png
 ---
-<link rel="stylesheet" href="../../css/gh-page-styles.css">
+<link rel="stylesheet" href="{{ site.url }}/css/gh-page-styles.css">
 <div class="row">
 	<div class="span9 columns">
   <h2 class="header">Angular-Isotope</h2>

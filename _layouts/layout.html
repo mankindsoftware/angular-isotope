@@ -12,8 +12,8 @@
 	<link href="http://fuelcdn.com/fuelux/2.2/css/fuelux-responsive.css" rel="stylesheet" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
 	<script src="http://fuelcdn.com/fuelux/2.2/loader.min.js" type="text/javascript"></script>
-    <link href="/css/docs.css" rel="stylesheet">
-	<link href="/js/google-code-prettify/prettify.css" rel="stylesheet">
+  <link href="{{ site.url }}/css/docs.css" rel="stylesheet">
+	<link href="{{ site.url }}/js/google-code-prettify/prettify.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -21,7 +21,7 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="{{ site.url }}/favicon.ico">
   </head>
 <body data-spy="scroll" data-target=".subnav" data-offset="50">
 {% include navigation.html %}
@@ -47,11 +47,11 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-   	<script src="/js/custom.js" type="text/javascript"></script>
+   	<script src="{{ site.url }}/js/custom.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-		var disqus_shortname = 'markhall'; // required: replace example with your forum shortname
+		var disqus_shortname = 'markallenhall'; // required: replace example with your forum shortname
 
 		/* * * DON'T EDIT BELOW THIS LINE * * */
 		(function () {
@@ -66,7 +66,7 @@
 	<script type="text/javascript">
 
 	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-29830549-1']);
+	  _gaq.push(['_setAccount', '']);
 	  _gaq.push(['_trackPageview']);
 
 	  (function() {
