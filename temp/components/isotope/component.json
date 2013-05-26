@@ -1,0 +1,8 @@
+{
+  "name": "isotope",
+  "version": "1.5.25",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/desandro/isotope"
+  }
+}
