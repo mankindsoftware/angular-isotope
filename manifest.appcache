@@ -1,0 +1,41 @@
+Error: Unknown provider: a from iso.services
+
+  http://localhost:3501/scripts/vendor/d10639ae.angular.js:2627
+  http://localhost:3501/scripts/vendor/d10639ae.angular.js:2755 in getService
+  http://localhost:3501/scripts/vendor/d10639ae.angular.js:2773 in invoke
+  http://localhost:3501/scripts/vendor/d10639ae.angular.js:2709
+CACHE MANIFEST
+
+# Time: Sat May 25 2013 21:13:44 GMT-0700 (Pacific Daylight Time)
+# This manifest was created by confess.js, http://github.com/jamesgpearce/confess
+#
+# Retrieved URL: http://localhost:3501/
+# User-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
+#
+# Config:
+#  task: appcache
+#  userAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
+#  wait: 0
+#  consolePrefix: #
+#  verbose: true
+#  appcache:
+#   urlsFromDocument: true
+#   urlsFromRequests: false
+#   cacheFilter: .*
+#   networkFilter: null
+#  url: http://localhost:3501
+#  configFile: C:\Users\Mark\AppData\Roaming\npm\node_modules\yeoman\lib\support\confess.json
+
+CACHE:
+components/isotope/css/style.css
+components/isotope/jquery.isotope.js
+components/jquery/jquery.min.js
+http://localhost:3501/styles/img/glyphicons-halflings-white.png
+http://localhost:3501/styles/img/glyphicons-halflings.png
+http://www.google-analytics.com/ga.js
+scripts/2e64bec0.scripts.js
+scripts/vendor/d10639ae.angular.js
+styles/8c3b48ff.main.css
+
+NETWORK:
+*
