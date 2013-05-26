@@ -275,7 +275,7 @@ angular.module('iso.directives')
     , replace: true
     , link: function(scope, element, attrs) {
       var optionSet = $(element)
-      , optPublish = attrs.optPublish || "opt-kind-opt"
+      , optPublish = attrs.optPublish || "opt-kind"
       , optKey = optionSet.attr('ok-key')
       , selected = optionSet.find('.selected')
       , preSelectOptions = {}
