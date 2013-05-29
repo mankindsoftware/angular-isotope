@@ -1,7 +1,6 @@
- .sass-cache
- .sass-cache/*
-_site
-_site/*
-*.sublime*
+.sass-cache
+.tmp
+node_modules
 temp
-dist
+app/components
+angular-isotope.sublime*
