@@ -114,6 +114,7 @@ var angularIsotopeController = function($scope, $timeout, optionsStore) {
 
 
 var isoSortByDataController = function($scope, optionsStore) {
+  'use strict';
 
   $scope.getHash = function(s) {
       return 'opt'+ s; // TODO: Replace non-key chars '.', '#', '[',']'
@@ -200,7 +201,6 @@ var isoSortByDataController = function($scope, optionsStore) {
 };
 
 angular.module('angular-isotope.directives')
-
 .directive('isotopeContainer', ['$injector', function($injector) {
 	'use strict';
 	var options = {};
@@ -255,7 +255,6 @@ angular.module('angular-isotope.directives')
 }]);
 
 angular.module('angular-isotope.directives')
-
 .directive('isoSortbyData', function(optionsStore) {
   return {
     restrict: 'A'
@@ -282,7 +281,6 @@ angular.module('angular-isotope.directives')
   });
 
 angular.module('angular-isotope.directives')
-
 .directive('optKind', function(){
   return {
     restrict: 'A'
@@ -350,6 +348,7 @@ angular.module('angular-isotope.directives')
 angular.module('angular-isotope.services', [], function($provide) {
   $provide.factory('optionsStore', function() {
     'use strict';
+
     var storedOptions = {};
 
     return {

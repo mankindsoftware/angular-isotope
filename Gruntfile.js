@@ -77,7 +77,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('default', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat', 'uglify', 'copy:main']);
+    grunt.registerTask('default', ['concat', 'uglify', 'copy:main']);
     grunt.registerTask('livereload', ['default', 'watch']);
 
 };
