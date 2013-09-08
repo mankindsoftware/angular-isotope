@@ -1,6 +1,2 @@
-.sass-cache
-.tmp
 node_modules
-temp
-app/components
-angular-isotope.sublime*
+components
