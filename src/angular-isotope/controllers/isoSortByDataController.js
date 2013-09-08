@@ -1,4 +1,5 @@
 var isoSortByDataController = function($scope, optionsStore) {
+  'use strict';
 
   $scope.getHash = function(s) {
       return 'opt'+ s; // TODO: Replace non-key chars '.', '#', '[',']'

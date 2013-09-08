@@ -1,5 +1,4 @@
 angular.module('angular-isotope.directives')
-
 .directive('isotopeContainer', ['$injector', function($injector) {
 	'use strict';
 	var options = {};

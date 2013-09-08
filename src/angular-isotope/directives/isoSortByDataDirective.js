@@ -1,5 +1,4 @@
 angular.module('angular-isotope.directives')
-
 .directive('isoSortbyData', function(optionsStore) {
   return {
     restrict: 'A'

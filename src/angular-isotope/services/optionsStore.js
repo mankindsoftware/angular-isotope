@@ -1,6 +1,7 @@
 angular.module('angular-isotope.services', [], function($provide) {
   $provide.factory('optionsStore', function() {
     'use strict';
+
     var storedOptions = {};
 
     return {

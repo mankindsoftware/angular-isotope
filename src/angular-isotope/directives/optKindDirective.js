@@ -1,5 +1,4 @@
 angular.module('angular-isotope.directives')
-
 .directive('optKind', function(){
   return {
     restrict: 'A'

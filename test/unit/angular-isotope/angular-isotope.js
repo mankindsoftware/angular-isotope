@@ -1,5 +1,4 @@
 'use strict';
-
 // Set the jasmine fixture path
 // jasmine.getFixtures().fixturesPath = 'base/';
 
@@ -24,18 +23,18 @@ describe('angular-isotope', function() {
         expect(hasModule('angular-isotope.config')).toBeTruthy();
     });
 
-    
 
-    
+
+
     it('should load directives module', function() {
         expect(hasModule('angular-isotope.directives')).toBeTruthy();
     });
-    
 
-    
+
+
     it('should load services module', function() {
         expect(hasModule('angular-isotope.services')).toBeTruthy();
     });
-    
+
 
 });
