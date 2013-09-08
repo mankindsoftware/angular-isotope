@@ -1,12 +1,15 @@
 <div>
-  <span>
-    <h1>Angular Isotope Basic Example, featuring OptKind</h1>
-  </span>
+  <h1>Angular Isotope Basic Example</h1>
+  <h3>
+    <a href="https://github.com/mankindsoftware" target="_blank">Mankind Software</a>
+  </h3>
+</div>
+<div>
   <div ng-init=
       "xList=[
       {name:'a', number:'1', date:'1360413309421', class:'purple'}
       ,{name:'b', number:'5', date:'1360213309421', class:'orange'}
-      ,{name:'c', number:'10', date:'1360113309421', class:'blue'} 
+      ,{name:'c', number:'10', date:'1360113309421', class:'blue'}
       ,{name:'d', number:'2', date:'1360113309421', class:'green'}
       ,{name:'e', number:'6', date:'1350613309421', class:'green'}
       ,{name:'f', number:'21', date:'1350613309421', class:'orange'}
@@ -18,23 +21,23 @@
   <span id='options' class='option-combo'>
     <h3>Sort By</h3>
     <!-- iso-sortby-data must come before opt-kind -->
-    <ul iso-sortby-data opt-kind ok-key="sortBy" opt-publish="my-iso-opts" >
-      <li><a ok-sel=".name" class='selected'>Name</a></li>
-      <li><a ok-sel="[number]" ok-type="integer">Number</a></li>
-      <li><a ok-sel="[date]" ok-type="integer">Date</a></li>
+    <ul iso-sortby-data opt-kind opt-key="sortBy" opt-publish="my-iso-opts" >
+      <li><a opt-sel=".name" class='selected'>Name</a></li>
+      <li><a opt-sel="[number]" opt-type="integer">Number</a></li>
+      <li><a opt-sel="[date]" opt-type="integer">Date</a></li>
     </ul>
   </span>
   <div class="clearfix"/>
   <span id='options' class='option-combo'>
     <h3>Filter</h3>
-    <ul opt-kind ok-key="filter" opt-publish="my-iso-opts">
-      <li><a ok-sel="*" class="selected">Show All</a></li>
-      <li><a ok-sel=".purple">Purple</a></li>
-      <li><a ok-sel=".orange">Orange</a></li>
-      <li><a ok-sel=".blue">Blue</a></li>
-      <li><a ok-sel=".green">Green</a></li>
-      <li><a ok-sel=":not(.blue)">Not Blue</a></li>
-      <li><a ok-sel="#extra">Extra Only</a></li>
+    <ul opt-kind opt-key="filter" opt-publish="my-iso-opts">
+      <li><a opt-sel="*" class="selected">Show All</a></li>
+      <li><a opt-sel=".purple">Purple</a></li>
+      <li><a opt-sel=".orange">Orange</a></li>
+      <li><a opt-sel=".blue">Blue</a></li>
+      <li><a opt-sel=".green">Green</a></li>
+      <li><a opt-sel=":not(.blue)">Not Blue</a></li>
+      <li><a opt-sel="#extra">Extra Only</a></li>
       </ul>
   </span>
   <div class="clearfix"/>
@@ -43,10 +46,10 @@
     <ul>
       <script>
         var addToList = function() {
-          var s=angular.element('#isotopeContainer').scope(); 
+          var s=angular.element('#isotopeContainer').scope();
           s.count = s.count || 0;
           newItem={name:'add', number:s.count--, date: Date.now(), class:'purple'};
-          s.$apply(s.xList.push(newItem)); 
+          s.$apply(s.xList.push(newItem));
         }
       </script>
       <li><a onClick="addToList()">Add to List</a>
@@ -72,3 +75,4 @@
     </li>
   </ul>
 </div>
+

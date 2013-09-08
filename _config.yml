@@ -1,5 +1,0 @@
-auto: true
-markdown: rdiscount
-pygments: true
-permalink: /blog/:title
-url: http://mankindsoftware.github.io/angular-isotope
