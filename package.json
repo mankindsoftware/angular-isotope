@@ -1,8 +1,17 @@
 {
+    "author": "Mark Allen Hall",
     "name": "angular-isotope",
-    "version": "0.0.0",
+    "description": "AngularIsotope - Isotope directives library for AngularJS.",
+    "version": "0.1.6",
+    "homepage": "http://mankindsoftware.github.com/angular-isotope",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/mankindsoftware/angular-isotope.git"
+    },
     "dependencies": {},
     "devDependencies": {
+        "ejs": "*",
+        "express": "3.0.0",
         "grunt": "~0.4.1",
         "grunt-contrib-copy": "~0.4.1",
         "grunt-contrib-concat": "~0.3.0",
@@ -22,6 +31,7 @@
         "grunt-karma": "~0.4.3",
         "grunt-open": "~0.2.0",
         "grunt-concurrent": "~0.3.0",
+        "grunt-conventional-changelog": "~0.1.1",
         "matchdep": "~0.1.2",
         "connect-livereload": "~0.2.0",
         "grunt-google-cdn": "~0.2.0",

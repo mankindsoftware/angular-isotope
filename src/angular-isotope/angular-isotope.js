@@ -3,19 +3,19 @@
 // before all nested files are concatenated by Grunt
 
 // Config
-angular.module('angular-isotope.config', [])
-    .value('angular-isotope.config', {
+angular.module('iso.config', [])
+    .value('iso.config', {
         debug: true
     });
 
 // Modules
-angular.module('angular-isotope.directives', ['angular-isotope.services']);
-angular.module('angular-isotope.services', []);
-angular.module('angular-isotope',
+angular.module('iso.directives', ['iso.services']);
+angular.module('iso.services', []);
+angular.module('iso',
     [
-        'angular-isotope.config',
-        'angular-isotope.directives',
-        'angular-isotope.services'
+        'iso.config',
+        'iso.directives',
+        'iso.services'
     ]);
 
 

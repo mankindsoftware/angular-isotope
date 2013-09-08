@@ -1,4 +1,4 @@
- var demo = angular.module('angular-isotope-demo', ['angular-isotope.directives']);
+ var demo = angular.module('angular-isotope-demo', ['iso.directives']);
 
 demo.config(['$routeProvider', function($routeProvider) {
   'use strict';
