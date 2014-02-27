@@ -3,35 +3,118 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title></title>
-        <meta name="description" content=""/>
-        <meta name="viewport" content="width=device-width"/>
-        <link rel="stylesheet" href="styles/main.css"/>
-        <link rel="stylesheet" href="styles/style.css"/>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Angular Isotope</title>
+  <meta name="description" content=""/>
+  <meta name="viewport" content="width=device-width"/>
+  <link rel="stylesheet" href="styles/main.css"/>
+  <link rel="stylesheet" href="styles/style.css"/>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="angular-isotope-demo">
 
-    </head>
-    <body ng-app="angular-isotope-demo">
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+  <![endif]-->
 
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
+  <!--[if lt IE 9]>
+      <script src="scripts/vendor/es5-shim.min.js"></script>
+      <script src="scripts/vendor/json3.min.js"></script>
+  <![endif]-->
 
-        <!--[if lt IE 9]>
-            <script src="scripts/vendor/es5-shim.min.js"></script>
-            <script src="scripts/vendor/json3.min.js"></script>
-        <![endif]-->
+  <div class="container">
+    <div>
+      <h1>Angular-Isotope Example</h1>
+      <h2>
+        <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
+      </h2>
+    </div>
+    <div>
+      <div ng-init=
+        "xList=[
+        {name:'a', number:'1', date:'1360413309421', class:'purple'}
+        ,{name:'b', number:'5', date:'1360213309421', class:'orange'}
+        ,{name:'c', number:'10', date:'1360113309421', class:'blue'}
+        ,{name:'d', number:'2', date:'1360113309421', class:'green'}
+        ,{name:'e', number:'6', date:'1350613309421', class:'green'}
+        ,{name:'f', number:'21', date:'1350613309421', class:'orange'}
+        ,{name:'g', number:'3', date:'1340613309421', class:'blue'}
+        ,{name:'h', number:'7', date:'1330613309001', class:'purple'}
+        ,{name:'i', number:'22', date:'1360412309421', class:'blue'}
+        ] ">
+      </div>
 
-        <div class="container" ng-view></div>
+      <div class="row">
+        <div class="col-md-3">
+          <h4>Selector and Value-Based Sort</h4>
+          <div class="btn-group" iso-sortby-data opt-kind ok-key="sortBy" ok-publish="my-iso-opts">
+            <button type="button" class="btn btn-default" ok-sel=".name">Name</button>
+            <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
+            <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <h4>Selector-Based Filter</h4>
+          <div class="btn-group" opt-kind ok-key="filter" ok-publish="my-iso-opts">
+              <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
+              <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
+              <button type='button' class='btn btn-default' ok-sel=".orange">Orange</button>
+              <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
+              <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
+              <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
+              <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
+          </div>
+        </div>
+      </div>
 
-        <script src="scripts/vendor/jquery.js"></script>
-        <script src="scripts/vendor/angular.js"></script>
-        <script src="scripts/vendor/jquery.isotope.js"></script>
-        <script src="scripts/angular-isotope.js"></script>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>In-page Script</h4>
+          <button type='button' class='btn btn-default' onClick="addToList()">Add Item to List</button>
+        </div>
+        <div class="col-md-6">
+<!--           <h4>In-page Emit</h4>
+          <button type='button' class='btn btn-default' onClick="this.$broadcast('my-iso-opts', {filter:'.blue'})">Emit Blue</button>
+ -->        </div>
+      </div>
+      <div class="clearfix"/>
+        <h4></h4>
+        <ul id="isotopeContainer" isotope-container iso-options-subscribe="my-iso-opts" iso-method-subscribe="my-iso-method">
+          <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}">
+             <div class="symbol">{{x.name}}</div>
+             <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
+             <div class="number" number="{{x.number}}">{{x.number}}</div>
+          </li>
 
-        <script src="scripts/app.js"></script>
+          <li id="extra" isotope-item class="kindling green">
+             <div class="symbol">extra</div>
+             <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div>
+             <div class="number" number="20">Twenty</div>
+          </li>
 
-    </body>
+          <li id="extra" isotope-item class="kindling green">
+             <div class="symbol">extra</div>
+             <div class="weight" date="1310613309421">{{'1310613309421' | date}}</div>
+             <div class="number" number="9">Nine</div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  <script src="scripts/vendor/jquery.js"></script>
+  <script>
+    var addToList = function() {
+      var s=angular.element('#isotopeContainer').scope();
+      s.count = s.count || 0;
+      newItem={name:'add', number:s.count--, date: Date.now(), class:'purple'};
+      s.$apply(s.xList.push(newItem));
+    };
+  </script>
+  <script src="scripts/vendor/angular.js"></script>
+  <script src="scripts/vendor/jquery.isotope.js"></script>
+  <script src="scripts/angular-isotope.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
 </html>
