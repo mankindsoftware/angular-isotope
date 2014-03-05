@@ -75,18 +75,19 @@
           <button type='button' class='btn btn-default' onClick="addToList()">Add Item to List</button>
         </div>
         <div class="col-md-6">
-
-        </div>
+<!--           <h4>In-page Emit</h4>
+          <button type='button' class='btn btn-default' onClick="this.$broadcast('my-iso-opts', {filter:'.blue'})">Emit Blue</button>
+ -->        </div>
       </div>
       <div class="clearfix"/>
         <h4></h4>
         <ul id="isotopeContainer" isotope-container iso-options-subscribe="my-iso-opts" iso-method-subscribe="my-iso-method" ng-cloak class="ng-cloak">
-          <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}">
+          <li ng-repeat="x in xList track by x.number" isotope-item class="kindling {{x.class}}"  onClick="removeItem(this)">
              <div class="symbol">{{x.name}}</div>
              <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
              <div class="number" number="{{x.number}}">{{x.number}}</div>
           </li>
-
+          
           <li id="extra" isotope-item class="kindling green">
              <div class="symbol">extra</div>
              <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div>
@@ -98,17 +99,22 @@
              <div class="weight" date="1310613309421">{{'1310613309421' | date}}</div>
              <div class="number" number="9">Nine</div>
           </li>
-
         </ul>
       </div>
     </div>
-  </div>
   <script src="scripts/vendor/jquery-2.1.0.min.js"></script>
+  <script>
+    var removeItem = function(item) {
+      console.log(item);
+      console.log(this);
+    };
+  </script>
   <script>
     var addToList = function() {
       var s=angular.element('#isotopeContainer').scope();
       s.count = s.count || 0;
-      var newItem={name:'add', number:s.count--, date: Date.now(), class:'purple'};
+      var index = s.xList.length + 50;
+      var newItem={name:'a' + index, number:index, date: Date.now(), class:'purple'};
       s.$apply(s.xList.push(newItem));
     };
   </script>

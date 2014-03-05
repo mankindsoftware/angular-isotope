@@ -20,8 +20,12 @@ angular.module('iso',
         'iso.services'
     ]);
 
+var MSG_OPT = 'ng_iso_msgopt';
+var MSG_METH = 'ng_iso_msgmet';
+var REMOVE_ELEMENT = 'ng_iso_remel'
 
-angular.module("iso.controllers", ["iso.config", "iso.services"]).controller("angularIsotopeController", [
+angular.module("iso.controllers", ["iso.config", "iso.services"])
+.controller("angularIsotopeController", [
   "iso.config", "$scope", "$timeout", "optionsStore", function(config, $scope, $timeout, optionsStore) {
     "use strict";
     var buffer, initEventHandler, isoMode, isotopeContainer, methodHandler, onLayoutEvent, optionsHandler, postInitialized, scope;
@@ -49,8 +53,8 @@ angular.module("iso.controllers", ["iso.config", "iso.services"]).controller("an
     };
     $scope.init = function(isoInit) {
       isotopeContainer = isoInit.element;
-      initEventHandler($scope.$on, isoInit.isoOptionsEvent, optionsHandler);
-      initEventHandler($scope.$on, isoInit.isoMethodEvent, methodHandler);
+      initEventHandler($scope.$on, isoInit.isoOptionsEvent || MSG_OPT, optionsHandler);
+      initEventHandler($scope.$on, isoInit.isoMethodEvent || MSG_METH, methodHandler);
       $scope.isoMode = isoInit.isoMode || "addItems";
       return $timeout(function() {
         isotopeContainer.isotope(optionsStore.retrieve());
@@ -85,17 +89,22 @@ angular.module("iso.controllers", ["iso.config", "iso.services"]).controller("an
       params = option.params;
       return fun.apply($scope, params);
     };
-    initEventHandler($scope.$on, "iso-opts", optionsHandler);
-    initEventHandler($scope.$on, "iso-method", methodHandler);
+
     $scope.removeAll = function(cb) {
       return isotopeContainer.isotope("remove", isotopeContainer.data("isotope").$allAtoms, cb);
     };
     $scope.refresh = function() {
       return isotopeContainer.isotope();
     };
-    return $scope.$on(config.refreshEvent, function() {
+    $scope.$on(config.refreshEvent, function() {
       return $scope.refreshIso();
     });
+    $scope.$on(REMOVE_ELEMENT, function(message, element) {
+      return $scope.removeElement(element);
+    });
+    $scope.removeElement = function(element) {
+      return isotopeContainer.isotope("remove", element);
+    }
   }
 ]).controller("isoSortByDataController", [
   "iso.config", "$scope", "optionsStore", function(config, $scope, optionsStore) {
@@ -200,8 +209,8 @@ angular.module("iso.controllers", ["iso.config", "iso.services"]).controller("an
 ]);
 angular.module("iso.directives", ["iso.config", "iso.services", "iso.controllers"]);
 
-angular.module("iso.directives").directive("isotopeContainer", [
-  "$injector", "$parse", function($injector, $parse) {
+angular.module("iso.directives")
+.directive("isotopeContainer", ["$injector", "$parse", function($injector, $parse) {
     "use strict";
     var options;
     options = {};
@@ -229,15 +238,18 @@ angular.module("iso.directives").directive("isotopeContainer", [
       }
     };
   }
-]).directive("isotopeItem", [
-  "iso.config", "$timeout", function(config, $timeout) {
+])
+.directive("isotopeItem", [
+  "$rootScope", "iso.config", "$timeout", function($rootScope, config, $timeout) {
     return {
       restrict: "A",
       require: "^isotopeContainer",
       link: function(scope, element, attrs) {
-        var $element;
-        $element = $(element);
-        scope.setIsoElement($element);
+
+        scope.setIsoElement(element);
+        scope.$on('$destroy', function(message) {
+          $rootScope.$broadcast(REMOVE_ELEMENT, element);
+        })
         if (attrs.ngRepeat && true === scope.$last && "addItems" === scope.isoMode) {
           element.ready(function() {
             return $timeout((function() {
@@ -249,7 +261,8 @@ angular.module("iso.directives").directive("isotopeContainer", [
       }
     };
   }
-]).directive("isoSortbyData", function() {
+])
+.directive("isoSortbyData", function() {
     return {
       restrict: "A",
       controller: "isoSortByDataController",
@@ -271,13 +284,15 @@ angular.module("iso.directives").directive("isotopeContainer", [
       }
     };
   }
-).directive("optKind", ['optionsStore', function(optionsStore) {
+)
+.directive("optKind", ['optionsStore', function(optionsStore) {
   return {
     restrict: "A",
     link: function(scope, element, attrs) {
-      var createOptions, doOption, emitOption, optKey, optPublish, optionSet, active;
+      var createOptions, doOption, emitOption, optKey, optPublish, methPublish, optionSet, active;
       optionSet = $(element);
-      optPublish = attrs.okPublish || "opt-kind";
+      optPublish = attrs.okPublish || MSG_OPT;
+      methPublish = attrs.okPublish || MSG_METH;
       optKey = optionSet.attr("ok-key");
       active = optionSet.find(".active");
 
