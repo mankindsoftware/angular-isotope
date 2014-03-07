@@ -23,19 +23,6 @@ module.exports = function (grunt) {
     clean: [
       "dist"
     ],
-   // Coffee to JS compilation
-    coffee: {
-      dev: {
-        options: {
-          bare: true
-        },
-        expand: true,
-        cwd: "src/coffee",
-        src: ["**/*.coffee"],
-        dest: "src/angular-isotope",
-        ext: ".js"
-      }
-    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'

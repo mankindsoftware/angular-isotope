@@ -1,109 +1,161 @@
-angular.module("iso.directives", ["iso.config", "iso.services", "iso.controllers"])
-angular.module("iso.directives").directive("isotopeContainer", ["$injector", "$parse", ($injector, $parse) ->
-  "use strict"
-  options = {}
-  controller: "angularIsotopeController"
-  link: (scope, element, attrs) ->
-    linkOptions = []
-    isoOptions = attrs.isoOptions
-    isoInit = {}
+angular.module "iso.directives", [
+  "iso.config"
+  "iso.services"
+  "iso.controllers"
+]
+angular.module("iso.directives").directive("isotopeContainer", [
+  "$injector"
+  "$parse"
+  ($injector, $parse) ->
+    "use strict"
+    options = undefined
+    options = {}
+    return (
+      controller: "angularIsotopeController"
+      link: (scope, element, attrs) ->
+        isoInit = undefined
+        isoOptions = undefined
+        linkOptions = undefined
+        linkOptions = []
+        isoOptions = attrs.isoOptions
+        isoInit = {}
+        if isoOptions
+          linkOptions = $parse(isoOptions)(scope)
+          scope.updateOptions linkOptions  if angular.isObject(linkOptions)
+        isoInit.element = element
+        isoInit.isoOptionsEvent = attrs.isoOptionsSubscribe
+        isoInit.isoMethodEvent = attrs.isoMethodSubscribe
+        isoInit.isoMode = attrs.isoMode
+        scope.init isoInit  if attrs.isoIgnore isnt "true"
+        element
+    )
+]).directive("isotopeItem", [
+  "$rootScope"
+  "iso.config"
+  "iso.topics"
+  "$timeout"
+  ($rootScope, config, topics, $timeout) ->
+    return (
+      restrict: "A"
+      require: "^isotopeContainer"
+      link: (scope, element, attrs) ->
+        scope.setIsoElement element
+        scope.$on "$destroy", (message) ->
+          $rootScope.$broadcast topics.MSG_REMOVE, element
+          return
 
-    # If ui-options are passed, merge them onto global defaults.
-    if isoOptions
-      linkOptions = $parse(isoOptions)(scope)
-      scope.updateOptions linkOptions  if angular.isObject(linkOptions)
-    isoInit["element"] = element
-    isoInit["isoOptionsEvent"] = attrs.isoOptionsSubscribe
-    isoInit["isoMethodEvent"] = attrs.isoMethodSubscribe
-    isoInit["isoMode"] = attrs.isoMode
+        if attrs.ngRepeat and true is scope.$last and "addItems" is scope.isoMode
+          element.ready ->
+            $timeout (->
+              scope.refreshIso()
+            ), config.refreshDelay or 0
 
-    # allow some container iso's to be ignored
-    scope.init isoInit  if attrs.isoIgnore isnt "true"
-    element
-]).directive("isotopeItem", ["iso.config", "$timeout", (config, $timeout) ->
-  restrict: "A"
-  link: (scope, element, attrs) ->
-    $element = $(element)
-
-    # handles cases where the isotopeItem is inside an isolate scope
-    correctScope = (if scope.hasOwnProperty("$root") then scope.$parent else scope)
-
-    #$element.addClass(scope.isotopeOptions.itemClass);
-    correctScope.setIsoElement $element
-
-    # Refresh after last element.
-    if attrs.ngRepeat and true is correctScope.$last and "addItems" is correctScope.isoMode
-      element.ready ->
-
-        # mobile is just a bit slower, allow module configuration to provide a reasonable delay based on platform
-        $timeout (->
-          correctScope.refreshIso()
-        ), config.refreshDelay or 0
-
-    element
-]).directive("isoSortbyData", ["optionsStore", (optionsStore) ->
+        element
+    )
+]).directive("isoSortbyData", ->
   restrict: "A"
   controller: "isoSortByDataController"
-  replace: true
   link: (scope, element, attrs) ->
+    methSet = undefined
+    methods = undefined
+    optEvent = undefined
+    optKey = undefined
+    optionSet = undefined
+    options = undefined
     optionSet = $(element)
     optKey = optionSet.attr("ok-key")
-    optEvent = "iso-opts" # Not attr('opt-publish'), as this may not be instantiated.
+    optEvent = "iso-opts"
     options = {}
-    methSet = optionSet.children().find("[ok-sel]")
-
-    # Create alternate selector values
+    methSet = optionSet.find("[ok-sel]")
     methSet.each (index) ->
+      $this = undefined
       $this = $(this)
       $this.attr "ok-sortby-key", scope.getHash($this.attr("ok-sel"))
 
-
-    # Create sort data table, mapping selector to how value is returned for comparison
     methods = scope.createSortByDataMethods(methSet)
     scope.storeMethods methods
-]).directive("optKind", ->
-  restrict: "A"
-  replace: true
-  link: (scope, element, attrs) ->
-    optionSet = $(element)
-    optPublish = attrs.okPublish or "opt-kind"
-    optKey = optionSet.attr("ok-key")
-    selected = optionSet.find(".selected")
-    preSelectOptions = {}
+).directive "optKind", [
+  "optionsStore"
+  (optionsStore) ->
+    return (
+      restrict: "A"
+      controller: "isoSortByDataController"
+      link: (scope, element, attrs) ->
+        createSortByDataMethods = undefined
+        createOptions = undefined
+        doOption = undefined
+        emitOption = undefined
+        optKey = undefined
+        optPublish = undefined
+        methPublish = undefined
+        optionSet = undefined
+        determineAciveClass = undefined
+        activeClass = undefined
+        activeSelector = undefined
+        active = undefined
+        optionSet = $(element)
+        optPublish = attrs.okPublish or topics.MSG_OPT
+        methPublish = attrs.okPublish or topics.MSG_METH
+        optKey = optionSet.attr("ok-key")
+        determineActiveClass = ->
+          activeClass = attrs.okActiveClass
+          activeClass = (if optionSet.find(".selected").length then "selected" else "active")  unless activeClass
+          activeSelector = "." + activeClass
+          active = optionSet.find(activeSelector)
+          return
 
-    # Emit dynamically made option object, e.g. {filter:'.my-filter-class'}
-    createOptions = (item) ->
-      if item
-        option = {}
-        virtualSortByKey = item.attr("ok-sortby-key")
-        ascAttr = item.attr("opt-ascending")
-        key = virtualSortByKey or item.attr("ok-sel")
-        option["sortAscending"] = (if ascAttr then ascAttr is "true" else true)  if virtualSortByKey
-        option[optKey] = key
-        option
+        createSortByDataMethods = (optionSet) ->
+          methSet = undefined
+          methods = undefined
+          optKey = undefined
+          options = undefined
+          optKey = optionSet.attr("ok-key")
+          return  if optKey isnt "sortBy"
+          options = {}
+          methSet = optionSet.find("[ok-sel]")
+          methSet.each (index) ->
+            $this = undefined
+            $this = $(this)
+            $this.attr "ok-sortby-key", scope.getHash($this.attr("ok-sel"))
 
-    emitOption = (option) ->
-      scope.preSelectOptions = $.extend.apply(null, [true, scope.preSelectOptions].concat(option))
-      option["ok"] = scope.preSelectOptions
-      scope.$emit optPublish, option
+          methods = scope.createSortByDataMethods(methSet)
+          scope.storeMethods methods
 
-    doOption = (event) ->
-      event.preventDefault()
-      selItem = $(event.target)
+        createOptions = (item) ->
+          ascAttr = undefined
+          key = undefined
+          option = undefined
+          virtualSortByKey = undefined
+          if item
+            option = {}
+            virtualSortByKey = item.attr("ok-sortby-key")
+            ascAttr = item.attr("opt-ascending")
+            key = virtualSortByKey or item.attr("ok-sel")
+            option.sortAscending = ((if ascAttr then ascAttr is "true" else true))  if virtualSortByKey
+            option[optKey] = key
+            option
 
-      # don't proceed if already selected
-      return false  if selItem.hasClass("selected")
-      optionSet.find(".selected").removeClass "selected"
-      selItem.addClass "selected"
-      emitOption createOptions(selItem)
-      false
+        emitOption = (option) ->
+          optionsStore.store option
+          scope.$emit optPublish, option
 
+        doOption = (event) ->
+          selItem = undefined
+          event.preventDefault()
+          selItem = $(event.target)
+          return false  if selItem.hasClass(activeClass)
+          optionSet.find(activeSelector).removeClass activeClass
+          selItem.addClass activeClass
+          emitOption createOptions(selItem)
+          false
 
-    # Initialize to selected values
-    scope.preSelectOptions = createOptions(selected)  if selected.length
+        determineActiveClass()
+        createSortByDataMethods optionSet
+        if active.length
+          opts = createOptions(active)
+          optionsStore.store opts
+        optionSet.on "click", (event) ->
+          doOption event
 
-    # Delegate click
-    optionSet.on "click", (event) ->
-      doOption event
-)
-
+    )
+]
