@@ -26,7 +26,7 @@
 
   <div class="container">
     <div>
-      <h1>Angular-Isotope Example</h1>
+      <h1>Angular-Isotope Example <small>Advanced</small><h5><a href="index.html">see basic demo</a></h5>
       <h2>
         <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
       </h2>
@@ -78,9 +78,10 @@
  
         </div>
       </div>
-      <p/>
+      <p></p>
       <div ng-if="!Array.prototype.filter" class="well">
-          <h4>Click on an item to remove.</h4>
+        <h4>Click on an item to remove.</h4>
+        <div>This example uses "ng-repeat='x in xList track by x.number'". The "track by" feature facilitates clean removal of an isotope-item.</div>
       </div>
       <div class="clearfix"/>
         <h4></h4>
@@ -93,6 +94,10 @@
 
         </ul>
       </div>
+      <div class="well">
+        <h4>xList</h4>
+        <div>{{xList}}</div>
+      </div>
     </div>
   </div>
   <script src="scripts/vendor/jquery-2.1.0.min.js"></script>
@@ -103,7 +108,7 @@
       var number = $(elem).find(".number").attr("number");
       var items = s.xList.filter(function( obj ) {
         return +obj.number != +number;
-      })
+      });
       s.$apply(s.xList = items);
     };
   </script>

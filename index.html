@@ -26,7 +26,7 @@
 
   <div class="container">
     <div>
-      <h1>Angular-Isotope Example</h1>
+      <h1>Angular-Isotope Example <small>Basic</small><h5><a href="advanced.html">see advanced demo</a></h5>
       <h2>
         <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
       </h2>
@@ -49,7 +49,7 @@
       <div class="row">
         <div class="col-md-3">
           <h4>Selector and Value-Based Sort</h4>
-          <div class="btn-group" iso-sortby-data opt-kind ok-key="sortBy" ok-publish="my-iso-opts">
+          <div class="btn-group" opt-kind ok-key="sortBy" ok-publish="my-iso-opts" ok-active-class="active">
             <button type="button" class="btn btn-default" ok-sel=".name">Name</button>
             <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
             <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
@@ -113,7 +113,7 @@
     };
   </script>
   <script src="scripts/vendor/angular.min.js"></script>
-  <script src="scripts/vendor/jquery.isotope.min.js"></script>
+  <script src="scripts/vendor/jquery.isotope.js"></script>
   <script src="scripts/angular-isotope.js"></script>
   <script src="scripts/app.js"></script>
 </body>
