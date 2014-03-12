@@ -75,7 +75,7 @@ angular.module("iso.directives")
     };
   }
 )
-.directive("optKind", ['optionsStore', function(optionsStore) {
+.directive("optKind", ['optionsStore', 'iso.topics', function(optionsStore, topics) {
   return {
     restrict: "A",
     controller: "isoSortByDataController",
