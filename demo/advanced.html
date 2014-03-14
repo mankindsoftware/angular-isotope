@@ -25,12 +25,19 @@
   <![endif]-->
 
   <div class="container">
-    <div>
-      <h1>Angular-Isotope Example <small>Advanced</small><h5><a href="index.html">see basic demo</a></h5>
-      <h2>
-        <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
-      </h2>
+    <div class='row'>
+      <div class="col-md-7">
+        <h1>Angular-Isotope Example <small>Advanced</small></h1><h5><a href="index.html">see basic demo</a></h5>
+        <h2>
+          <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
+        </h2>
+      </div>
+      <div class="col-md-5 well" >
+        <h4>Angular-Isotope can optionally wait for an event to be initialized.<br><small>Meanwhile, 'opt-kind' sort and filter events are stored.</small><br>Click the button to send an initialization event now.</h4>
+        <button class="btn btn-danger" ng-click="$emit('iso-init')">Start Isotope</button>
+      </div>
     </div>
+
     <div>
       <div ng-init=
         "xList=[
@@ -45,9 +52,7 @@
         ,{name:'i', number:'22', date:'1360412309421', class:'blue'}
         ] ">
       </div>
-      <div class="row">
-        <div class="col-md-4"><button class="btn btn-default" ng-click="$emit('iso-init')">Initialize Isotope</button></div>
-      </div>
+
       <div class="row">
         <div class="col-md-4">
           <h4>Selector and Value-Based Sort</h4>
