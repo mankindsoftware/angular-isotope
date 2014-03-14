@@ -45,11 +45,13 @@
         ,{name:'i', number:'22', date:'1360412309421', class:'blue'}
         ] ">
       </div>
-
+      <div class="row">
+        <div class="col-md-4"><button class="btn btn-default" ng-click="$emit('iso-init')">Initialize Isotope</button></div>
+      </div>
       <div class="row">
         <div class="col-md-4">
           <h4>Selector and Value-Based Sort</h4>
-          <div class="btn-group" iso-sortby-data opt-kind ok-key="sortBy" ok-publish="my-iso-opts">
+          <div class="btn-group" opt-kind ok-key="sortBy" ok-publish="my-iso-opts">
             <button type="button" class="btn btn-default" ok-sel=".name">Name</button>
             <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
             <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
@@ -85,7 +87,7 @@
       </div>
       <div class="clearfix"/>
         <h4></h4>
-        <ul id="isotopeContainer" isotope-container iso-options-subscribe="my-iso-opts" iso-method-subscribe="my-iso-method" ng-cloak class="ng-cloak">
+        <ul id="isotopeContainer" isotope-container iso-options-subscribe="my-iso-opts" iso-method-subscribe="my-iso-method" ng-cloak class="ng-cloak" iso-use-init-event="true">
           <li ng-repeat="x in xList track by x.number" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
              <div class="symbol">{{x.name}}</div>
              <div class="weight" date="{{x.date}}">{{x.date | date}}</div>

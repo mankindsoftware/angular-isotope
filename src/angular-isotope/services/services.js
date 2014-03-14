@@ -3,7 +3,7 @@ angular.module("iso.services", ["iso.config"], [
     return $provide.factory("optionsStore", [
       "iso.config", function(config) {
         "use strict";
-        var storedOptions;
+        var storedOptions, delayedInit;
         storedOptions = config.defaultOptions || {};
         return {
           store: function(option) {
@@ -12,6 +12,12 @@ angular.module("iso.services", ["iso.config"], [
           },
           retrieve: function() {
             return storedOptions;
+          },
+          storeInit: function(init) {
+            delayedInit = init;
+          },
+          retrieveInit: function() {
+            return delayedInit;
           }
         };
       }

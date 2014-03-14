@@ -48,7 +48,18 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
         return fun.call($scope, evt, hnd);
       }
     };
+    $scope.delayInit = function(isoInit) {
+      optionsStore.storeInit(isoInit);
+    };
+    $scope.delayedInit = function() {
+      var isoInit = optionsStore.retrieveInit();
+      $scope.init(isoInit);
+    };
+    $scope.$on('iso-init', function() {
+      $scope.delayedInit();
+    })
     $scope.init = function(isoInit) {
+      optionsStore.storeInit(isoInit);
       isotopeContainer = isoInit.element;
       initEventHandler($scope.$on, isoInit.isoOptionsEvent || topics.MSG_OPT, optionsHandler);
       initEventHandler($scope.$on, isoInit.isoMethodEvent || topics.MSG_METH, methodHandler);
@@ -230,7 +241,9 @@ angular.module("iso.directives")
         isoInit.isoOptionsEvent = attrs.isoOptionsSubscribe;
         isoInit.isoMethodEvent = attrs.isoMethodSubscribe;
         isoInit.isoMode = attrs.isoMode;
-        if (attrs.isoIgnore !== "true") {
+        if (attrs.isoUseInitEvent === "true") {
+          scope.delayInit(isoInit);
+        } else {
           scope.init(isoInit);
         }
         return element;
@@ -283,7 +296,7 @@ angular.module("iso.directives")
     };
   }
 )
-.directive("optKind", ['optionsStore', function(optionsStore) {
+.directive("optKind", ['optionsStore', 'iso.topics', function(optionsStore, topics) {
   return {
     restrict: "A",
     controller: "isoSortByDataController",
@@ -372,7 +385,7 @@ angular.module("iso.directives")
     return $provide.factory("optionsStore", [
       "iso.config", function(config) {
         "use strict";
-        var storedOptions;
+        var storedOptions, delayedInit;
         storedOptions = config.defaultOptions || {};
         return {
           store: function(option) {
@@ -381,6 +394,12 @@ angular.module("iso.directives")
           },
           retrieve: function() {
             return storedOptions;
+          },
+          storeInit: function(init) {
+            delayedInit = init;
+          },
+          retrieveInit: function() {
+            return delayedInit;
           }
         };
       }

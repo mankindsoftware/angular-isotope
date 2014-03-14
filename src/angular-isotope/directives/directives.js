@@ -22,7 +22,9 @@ angular.module("iso.directives")
         isoInit.isoOptionsEvent = attrs.isoOptionsSubscribe;
         isoInit.isoMethodEvent = attrs.isoMethodSubscribe;
         isoInit.isoMode = attrs.isoMode;
-        if (attrs.isoIgnore !== "true") {
+        if (attrs.isoUseInitEvent === "true") {
+          scope.delayInit(isoInit);
+        } else {
           scope.init(isoInit);
         }
         return element;

@@ -25,7 +25,18 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
         return fun.call($scope, evt, hnd);
       }
     };
+    $scope.delayInit = function(isoInit) {
+      optionsStore.storeInit(isoInit);
+    };
+    $scope.delayedInit = function() {
+      var isoInit = optionsStore.retrieveInit();
+      $scope.init(isoInit);
+    };
+    $scope.$on('iso-init', function() {
+      $scope.delayedInit();
+    })
     $scope.init = function(isoInit) {
+      optionsStore.storeInit(isoInit);
       isotopeContainer = isoInit.element;
       initEventHandler($scope.$on, isoInit.isoOptionsEvent || topics.MSG_OPT, optionsHandler);
       initEventHandler($scope.$on, isoInit.isoMethodEvent || topics.MSG_METH, methodHandler);
