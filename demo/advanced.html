@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="styles/main.css"/>
   <link rel="stylesheet" href="styles/style.css"/>
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
 </head>
 <body ng-app="angular-isotope-demo">
 
@@ -25,19 +26,6 @@
   <![endif]-->
 
   <div class="container">
-    <div class='row'>
-      <div class="col-md-7">
-        <h1>Angular-Isotope Example <small>Advanced</small></h1><h5><a href="index.html">see basic demo</a></h5>
-        <h2>
-          <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
-        </h2>
-      </div>
-      <div class="col-md-5 well" >
-        <h4>Angular-Isotope can optionally wait for an event to be initialized.<br><small>Meanwhile, 'opt-kind' sort and filter events are stored.</small><br>Click the button to send an initialization event now.</h4>
-        <button class="btn btn-danger" ng-click="$emit('iso-init')">Start Isotope</button>
-      </div>
-    </div>
-
     <div>
       <div ng-init=
         "xList=[
@@ -53,58 +41,89 @@
         ] ">
       </div>
 
+      <div class='row'>
+        <div class="col-md-7">
+          <h1>Angular-Isotope Example <small>Advanced</small></h1><h5><a href="index.html">see basic demo</a></h5>
+          <h2>
+            <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
+          </h2>
+        </div>
+        <div class="col-md-5 well" >
+          <h4>Start Angular-Isotope when you're ready.</h4>
+          <div><small>Angular-Isotope can be set to wait for an event to initialize.<small></div>
+          <div>Press the button to emit an 'iso-init' event.</div>
+          <p></p>
+          <button class="btn btn-danger" ng-click="$emit('iso-init')">Start Isotope</button> 
+          <p></p>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-md-7">
+        </div>
+        <div>
+          <p></p>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-md-4">
-          <h4>Selector and Value-Based Sort</h4>
-          <div class="btn-group" opt-kind ok-key="sortBy" ok-publish="my-iso-opts">
-            <button type="button" class="btn btn-default" ok-sel=".name">Name</button>
-            <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
-            <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Selector-Based Filter</h4>
+              <div class="btn-group" opt-kind ok-key="filter" ok-publish="my-iso-opts">
+                <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
+                <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
+                <button type='button' class='btn btn-default' ok-sel=".orange">Orange</button>
+                <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
+                <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
+                <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <p></p>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Selector and Value-Based Sort</h4>
+              <div class="btn-group" opt-kind ok-key="sortBy" ok-publish="my-iso-opts">
+                  <button type="button" class="btn btn-default" ok-sel=".name">Name</button>
+                  <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
+                  <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4>In-page Script</h4>
+              <button type='button' class='btn btn-default' onClick="addToList()">Add Item to List</button>
+            </div>
           </div>
         </div>
-        <div class="col-md-8">
-          <h4>Selector-Based Filter</h4>
-          <div class="btn-group" opt-kind ok-key="filter" ok-publish="my-iso-opts">
-              <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
-              <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
-              <button type='button' class='btn btn-default' ok-sel=".orange">Orange</button>
-              <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
-              <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
-              <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
-              <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
+        <div class="col-md-5 well">
+          <div ng-if="!Array.prototype.filter">
+            <h4>Click an Item to Delete</h4>
+            <div><small>The "track by" feature is key to AngularJS and Isotope reliably staying in sync.</small></div>
+            <div>ng-repeat = 'x in xList track by x.number'</div>
           </div>
         </div>
       </div>
+      <div class="clearfix"/>
 
       <div class="row">
-        <div class="col-md-2">
-          <h4>In-page Script</h4>
-          <button type='button' class='btn btn-default' onClick="addToList()">Add Item to List</button>
+        <div class="col-md-7">
+          <h4></h4>
+          <ul id="isotopeContainer" isotope-container iso-options-subscribe="my-iso-opts" iso-method-subscribe="my-iso-method" ng-cloak iso-use-init-event="true">
+            <li ng-repeat="x in xList track by x.number" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
+              <div class="symbol">{{x.name}}</div>
+              <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
+              <div class="number" number="{{x.number}}">{{x.number}}</div>
+            </li>
+          </ul>
         </div>
-        <div class="col-md-10">
- 
+        <div class="col-md-5 well">
+          <h4>xList</h4>
+          <div>{{xList}}</div>
         </div>
       </div>
       <p></p>
-      <div ng-if="!Array.prototype.filter" class="well">
-        <h4>Click on an item to remove.</h4>
-        <div>This example uses "ng-repeat='x in xList track by x.number'". The "track by" feature facilitates clean removal of an isotope-item.</div>
-      </div>
-      <div class="clearfix"/>
-        <h4></h4>
-        <ul id="isotopeContainer" isotope-container iso-options-subscribe="my-iso-opts" iso-method-subscribe="my-iso-method" ng-cloak class="ng-cloak" iso-use-init-event="true">
-          <li ng-repeat="x in xList track by x.number" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
-             <div class="symbol">{{x.name}}</div>
-             <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
-             <div class="number" number="{{x.number}}">{{x.number}}</div>
-          </li>
-
-        </ul>
-      </div>
-      <div class="well">
-        <h4>xList</h4>
-        <div>{{xList}}</div>
-      </div>
     </div>
   </div>
   <script src="scripts/vendor/jquery-2.1.0.min.js"></script>
@@ -132,5 +151,7 @@
   <script src="scripts/vendor/jquery.isotope.min.js"></script>
   <script src="scripts/angular-isotope.js"></script>
   <script src="scripts/app.js"></script>
+  <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+  <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>  
 </body>
 </html>

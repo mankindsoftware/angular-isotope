@@ -55,9 +55,10 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
       var isoInit = optionsStore.retrieveInit();
       $scope.init(isoInit);
     };
+
     $scope.$on('iso-init', function() {
       $scope.delayedInit();
-    })
+    });
     $scope.init = function(isoInit) {
       optionsStore.storeInit(isoInit);
       isotopeContainer = isoInit.element;
@@ -93,10 +94,10 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
       return $scope.updateOptions(option);
     };
     methodHandler = function(event, option) {
-      var fun, params;
-      fun = option.fun;
+      var name, params;
+      name = option.name;
       params = option.params;
-      return fun.apply($scope, params);
+      return isotopeContainer.isotope(name, params);
     };
 
     $scope.removeAll = function(cb) {
@@ -112,7 +113,7 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
       return $scope.removeElement(element);
     });
     $scope.removeElement = function(element) {
-      return isotopeContainer.isotope("remove", element);
+      return isotopeContainer && isotopeContainer.isotope("remove", element);
     };
   }
 ])
