@@ -50,6 +50,13 @@ angular.module("iso.directives")
             }), config.refreshDelay || 0);
           });
         }
+        if (!attrs.ngRepeat) {
+          element.ready(function() {
+            return $timeout((function() {
+              return scope.refreshIso();
+            }), config.refreshDelay || 0);
+          });          
+        }
         return element;
       }
     };
@@ -84,8 +91,8 @@ angular.module("iso.directives")
     link: function(scope, element, attrs) {
       var createSortByDataMethods, createOptions, doOption, emitOption, optKey, optPublish, methPublish, optionSet, determineAciveClass, activeClass, activeSelector, active;
       optionSet = $(element);
-      optPublish = attrs.okPublish || topics.MSG_OPT;
-      methPublish = attrs.okPublish || topics.MSG_METH;
+      optPublish = attrs.okPublish || topics.MSG_OPTIONS;
+      methPublish = attrs.okPublish || topics.MSG_METHOD;
       optKey = optionSet.attr("ok-key");
 
       determineActiveClass = function() {

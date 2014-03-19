@@ -25,7 +25,7 @@ angular.module("iso.services", ["iso.config"], [
   }
 ])
 .value('iso.topics', {
-  MSG_OPT:'ng_iso_msgopt',
-  MSG_METH:'ng_iso_msgmet',
-  MSG_REMOVE:'ng_iso_remel'
+  MSG_OPTIONS:'iso-option',
+  MSG_METHOD:'iso-method',
+  MSG_REMOVE:'iso-remove'
 });
