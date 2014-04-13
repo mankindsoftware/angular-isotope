@@ -1,7 +1,7 @@
 {
     "name": "angular-isotope",
     "main": ["dist/angular-isotope.js"],
-    "version": "0.0.7",
+    "version": "0.0.8",
     "homepage": "https://github.com/mankindsoftware/angular-isotope",
     "authors": [
       "Mark Allen Hall <markallenhall@gmail.com>"
@@ -16,7 +16,7 @@
     },
     "description": "AngularJS directives for Isotope by Metafizzy",
     "keywords": [
-      "angular-isotope"
+      "angular-isotope",
       "isotope",
       "jquery.isotope",
       "ng-isotope"

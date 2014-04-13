@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Angular Isotope</title>
+  <meta name="description" content=""/>
+  <meta name="viewport" content="width=device-width"/>
+  <link rel="stylesheet" href="styles/main.css"/>
+  <link rel="stylesheet" href="styles/style.css"/>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
+</head>   
+<body ng-app="angular-isotope-demo">
+
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+      <script src="scripts/vendor/es5-shim.min.js"></script>
+      <script src="scripts/vendor/json3.min.js"></script>
+  <![endif]-->
+
+  <div class="container">
+    <div ng-init=
+      "xList=[
+      {name:'a', number:'1', date:'1360413309421', class:'purple'}
+      ,{name:'b', number:'5', date:'1360213309421', class:'orange'}
+      ,{name:'c', number:'10', date:'1360113309421', class:'blue'}
+      ,{name:'d', number:'2', date:'1360113309421', class:'green'}
+      ,{name:'e', number:'6', date:'1350613309421', class:'green'}
+      ,{name:'f', number:'21', date:'1350613309421', class:'orange'}
+      ,{name:'g', number:'3', date:'1340613309421', class:'blue'}
+      ,{name:'h', number:'7', date:'1330613309001', class:'purple'}
+      ,{name:'i', number:'22', date:'1360412309421', class:'blue'}
+      ] ">
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <h1>Angular-Isotope Example <small>Basic</small></h1>
+          <h4>
+            <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
+          </h4>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Selector-Based Filter</h4>
+            <div class="btn-group" opt-kind ok-key="filter" >
+              <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
+              <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
+              <button type='button' class='btn btn-default' ok-sel=".orange">Orange</button>
+              <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
+              <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
+              <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
+              <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Selector and Value-Based Sort</h4>
+            <div class="btn-group" opt-kind ok-key="sortBy">
+              <button type="button" class="btn btn-default" ok-sel=".name">Name</button>
+              <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
+              <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4>Click an Item to Remove</small></h4>
+            <button type='button' class='btn btn-default' onClick="addToList()">Add item to array</button>
+          </div>
+        </div>
+   
+          <p></p>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Basic ng-repeat</h4> 
+            <div hljs><li ng-repeat="x in xList" isotope-item>...</li></div>
+          </div>
+        </div>
+
+        <!-- ISOTOPECONTAINER -->
+        <div class="row">
+          <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
+            <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
+               <div class="symbol">{{x.name}}</div>
+               <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
+               <div class="number" number="{{x.number}}">{{x.number}}</div>
+            </li>
+
+            <li id="extra" isotope-item class="kindling green">
+               <div class="symbol">extra</div>
+               <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div>
+               <div class="number" number="20">Twenty</div>
+            </li>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well">
+            <h4>xList</h4>
+            <div>Live view of this demo's array.</div>
+            <p></p>
+              {{xList}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMN 2 -->
+
+      <div class="col-md-6">
+        
+        <div class="row">
+          <h4><a href="index.html" >Basic</a> | <a href="advanced.html"> ng-repeat with orderBy filter </a> | <a href="advancedplus.html">Best Practice</a></h4>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 well">
+            <h3>ng-repeat</h3>
+            <body>
+            <p>Angular-Isotope is focussed on AngularJS's "ng-repeat" iteration directive to mass-produce Isotope tiles. 
+            </p>
+            <p>For each item in the given Angular array, an Isotope tile is stamped from the element block specified by "isotope-item".
+            </p>
+            </body>
+            <p></p>
+<!-- CODE -->
+            <div hljs>
+<ul isotope-container="isotope-container">
+    <li ng-repeat="x in xList" isotope-item="isotope-item" onClick="removeItem(this)">
+        <div class="symbol">{{x.name}}</div>
+        <div class="weight" date="{{x.date}}">{{x.date|date}}</div>
+        <div class="number" number="{{x.number}}">{{x.number}}</div>
+    </li>
+
+    <li id="extra" isotope-item class="kindling green">
+       <div class="symbol">extra</div>
+       <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div>
+       <div class="number" number="20">Twenty</div>
+    </li>
+</ul>
+            </div>
+<!-- /CODE -->
+          <p>
+          The "isotope-container" directive defines the bounds of the Isotope wrapper. 
+          </p>
+          <p>The "isotope-item" directive uses its element block as the template for the Isotope tile.
+          </p>
+          <p>Note that the "extra" tile is created independant of the example xList array.
+          </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 well">
+          <h3>Angular-Isotope Events</h3>
+          <div>Angular-Isotope listens for the following events and passes the data to Isotope's corresponding option or method command.</div>
+          <p></p>
+          <div hljs>
+$scope.$emit('iso-option', {options};
+$scope.$emit('iso-method', {name:methodName, params:optionalParameters}; </div>
+            <p>
+            <div>Metafizzy Isotope APIs <a href="http://isotope.metafizzy.co/docs/options.html" target="_blank">options</a> |
+            <a href="http://isotope.metafizzy.co/docs/methods.html" target="_blank">methods</a>
+            </div>
+             <p>
+          <h3>Example</h3>
+            <div hljs>$emit('iso-method', {name:'shuffle', params:null})</div>
+            <button class="btn btn-danger" ng-click="$emit('iso-method', {name:'shuffle', params:null})">Shuffle</button> 
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 well">
+            <h3>opt-kind directive for sortBy and filters</h3>
+            A filter uses a JQuery selector (attribute, class, or id) to reduce by category. A sortBy uses the JQuery selector to get a value for comparison. 
+            <p></p>
+            The "opt-kind" directive specifies a "filter" or "sortBy" key for an element group. For each element in that group, "ok-sel" specifies the selector, and makes that element clickable to invoke the sort or filter.
+            <p></p>
+            <hljs>
+<h4>Selector-Based Filter</h4>
+<div class="btn-group" opt-kind ok-key="filter" >
+  <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
+  <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
+  <button type='button' class='btn btn-default' ok-sel=".orange">Orange</button>
+  <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
+  <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
+  <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
+  <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
+</div>
+<h4>Selector and Value-Based Sort</h4>
+<div class="btn-group" opt-kind ok-key="sortBy">
+  <button type="button" class="btn btn-default" ok-sel=".name">Name</button>
+  <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
+  <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
+</div>
+            </hljs>
+            The "opt-kind" directive is either "sortBy" or "filter", which corresponds to the same-named Isotope configuration keys. 
+            <p></p>
+            The element becomes clickable and emits a message to the isotope-container when clicked.
+.           <p></p>
+            Each element uses the "ok-sel" attribute for indicating a JQuery selector, and additionally for "sortBy, an "ok-type" attribute (e.g. Integer) to indicate the type-casting for the element's string value in the sort's comparisons.
+            <p></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 well">
+            <h3>Removing an element</h3>
+            <div>Deleting an item from the Angular array automatically removes it from the Isotope container.</div>
+            <p></p>
+            <div hljs>
+  <script>
+    var removeItem = function(elem) {
+      if (!Array.prototype.filter) return;
+      var s=angular.element('#isotopeContainer').scope();
+      var number = $(elem).find(".number").attr("number");
+      var items = s.xList.filter(function( obj ) {
+        return +obj.number != +number;
+      });
+      s.$apply(s.xList = items);
+    };
+  </script>
+            </div>
+            <div>Note that the "extra" item is added to the Isotope container directly and cannot be removed this way.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/vendor/jquery-2.1.0.min.js"></script>
+  <script>
+    var addToList = function(number) {
+      var s=angular.element('#isotopeContainer').scope();
+      s.count = s.count || 0;
+      var newItem={name:'add', number:number || s.count--, date: Date.now(), class:'purple'};
+      s.$apply(s.xList.push(newItem));
+    };
+    var addLastItem = function() {
+      s.lastNumber = s.lastNumber || [];
+      addToList(s.lastNumber.shift());
+    };
+    var removeItem = function(elem) {
+      if (!Array.prototype.filter) return;
+      var s=angular.element('#isotopeContainer').scope();
+      var number = $(elem).find(".number").attr("number");
+      var items = s.xList.filter(function( obj ) {
+        return +obj.number != +number;
+      });
+      s.lastNumber = s.lastNumber || [];
+      s.lastNumber.unshift(number);
+      s.$apply(s.xList = items);
+    };
+  </script>
+  <script src="scripts/vendor/angular.min.js"></script>
+  <script src="scripts/vendor/jquery.isotope.js"></script>
+  <script src="scripts/angular-isotope.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+  <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+</body>
+</html>
