@@ -320,8 +320,8 @@ angular.module("iso.directives")
     link: function(scope, element, attrs) {
       var createSortByDataMethods, createOptions, doOption, emitOption, optKey, optPublish, methPublish, optionSet, determineAciveClass, activeClass, activeSelector, active;
       optionSet = $(element);
-      optPublish = attrs.okPublish || topics.MSG_OPTIONS;
-      methPublish = attrs.okPublish || topics.MSG_METHOD;
+      optPublish = attrs.okPublish || attrs.okOptionsPublish || topics.MSG_OPTIONS;
+      methPublish = attrs.okMethodPublish || topics.MSG_METHOD;
       optKey = optionSet.attr("ok-key");
 
       determineActiveClass = function() {

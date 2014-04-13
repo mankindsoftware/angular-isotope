@@ -1,13 +1,14 @@
 {
     "name": "angular-isotope",
-    "main": ["ng-isotope.js", "isotope.pkgd.js"],
-    "version": "0.0.6",
+    "main": ["dist/angular-isotope.js"],
+    "version": "0.0.7",
     "homepage": "https://github.com/mankindsoftware/angular-isotope",
     "authors": [
       "Mark Allen Hall <markallenhall@gmail.com>"
     ],
     "dependencies": {
-        "angular": "~1.0.7"
+        "angular": "~1.0.7",
+        "isotope": "2.0.0"
     },
     "devDependencies": {
         "angular-mocks": "~1.0.7",
@@ -15,9 +16,10 @@
     },
     "description": "AngularJS directives for Isotope by Metafizzy",
     "keywords": [
-      "isotope",
-      "ng-isotope",
       "angular-isotope"
+      "isotope",
+      "jquery.isotope",
+      "ng-isotope"
     ],
     "license": "GPL 3"
 }
