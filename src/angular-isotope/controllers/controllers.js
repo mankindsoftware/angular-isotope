@@ -44,7 +44,7 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
       $scope.isoMode = isoInit.isoMode || "addItems";
       return $timeout(function() {
         var opts = optionsStore.retrieve();
-        isotopeContainer.isotope(opts);
+        ((window.jQuery && isotopeContainer.isotope(opts)) || new Isotope(isotopeContainer, opts));
         postInitialized = true;
       });
     };
@@ -114,10 +114,10 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
         getSortData: methods
       });
     };
-    $scope.optSortData = function(item, index) {
+    $scope.optSortData = function(index, item) {
       var $item, elementSortData, fun, genSortDataClosure, selector, sortKey, type;
       elementSortData = {};
-      $item = $(item);
+      $item = angular.element(item);
       selector = $item.attr("ok-sel");
       type = $item.attr("ok-type");
       sortKey = $scope.getHash(selector);
@@ -133,14 +133,14 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     $scope.createSortByDataMethods = function(elem) {
       var options, sortDataArray;
       options = $(elem);
-      sortDataArray = reduce($.map(options, $scope.optSortData));
+      sortDataArray = reduce(options.map($scope.optSortData));
       return sortDataArray;
     };
     reduce = function(list) {
       var reduction;
       reduction = {};
-      $.each(list, function(index, item) {
-        return $.extend(reduction, item);
+      angular.forEach(list, function(item, index) {
+        return angular.extend(reduction, item);
       });
       return reduction;
     };
