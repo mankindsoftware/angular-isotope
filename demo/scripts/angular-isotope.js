@@ -67,7 +67,7 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
       $scope.isoMode = isoInit.isoMode || "addItems";
       return $timeout(function() {
         var opts = optionsStore.retrieve();
-        isotopeContainer.isotope(opts);
+        ((window.jQuery && isotopeContainer.isotope(opts)) || new Isotope(isotopeContainer, opts));
         postInitialized = true;
       });
     };
@@ -137,10 +137,10 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
         getSortData: methods
       });
     };
-    $scope.optSortData = function(item, index) {
+    $scope.optSortData = function(index, item) {
       var $item, elementSortData, fun, genSortDataClosure, selector, sortKey, type;
       elementSortData = {};
-      $item = $(item);
+      $item = angular.element(item);
       selector = $item.attr("ok-sel");
       type = $item.attr("ok-type");
       sortKey = $scope.getHash(selector);
@@ -156,14 +156,14 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     $scope.createSortByDataMethods = function(elem) {
       var options, sortDataArray;
       options = $(elem);
-      sortDataArray = reduce($.map(options, $scope.optSortData));
+      sortDataArray = reduce(options.map($scope.optSortData));
       return sortDataArray;
     };
     reduce = function(list) {
       var reduction;
       reduction = {};
-      $.each(list, function(index, item) {
-        return $.extend(reduction, item);
+      angular.forEach(list, function(item, index) {
+        return angular.extend(reduction, item);
       });
       return reduction;
     };
@@ -297,14 +297,14 @@ angular.module("iso.directives")
       controller: "isoSortByDataController",
       link: function(scope, element, attrs) {
         var methSet, methods, optEvent, optKey, optionSet, options;
-        optionSet = $(element);
+        optionSet = angular.element(element);
         optKey = optionSet.attr("ok-key");
         optEvent = "iso-opts";
         options = {};
         methSet = optionSet.find("[ok-sel]");
         methSet.each(function(index) {
           var $this;
-          $this = $(this);
+          $this = angular.element(this);
           return $this.attr("ok-sortby-key", scope.getHash($this.attr("ok-sel")));
         });
         methods = scope.createSortByDataMethods(methSet);
@@ -343,7 +343,7 @@ angular.module("iso.directives")
         methSet = optionSet.find("[ok-sel]");
         methSet.each(function(index) {
           var $this;
-          $this = $(this);
+          $this = angular.element(this);
           return $this.attr("ok-sortby-key", scope.getHash($this.attr("ok-sel")));
         });
         methods = scope.createSortByDataMethods(methSet);
@@ -373,7 +373,7 @@ angular.module("iso.directives")
       doOption = function(event) {
         var selItem;
         event.preventDefault();
-        selItem = $(event.target);
+        selItem = angular.element(event.target);
         if (selItem.hasClass(activeClass)) {
           return false;
         }
@@ -397,7 +397,8 @@ angular.module("iso.directives")
       });
     }
   };
-}]);angular.module("iso.services", ["iso.config"], [
+}]);
+angular.module("iso.services", ["iso.config"], [
   '$provide', function($provide) {
     return $provide.factory("optionsStore", [
       "iso.config", function(config) {

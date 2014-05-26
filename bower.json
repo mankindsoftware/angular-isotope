@@ -16,7 +16,7 @@
     },
     "description": "AngularJS directives for Isotope by Metafizzy",
     "keywords": [
-      "angular-isotope"
+      "angular-isotope",
       "isotope",
       "jquery.isotope",
       "ng-isotope"
