@@ -68,14 +68,14 @@ angular.module("iso.directives")
       controller: "isoSortByDataController",
       link: function(scope, element, attrs) {
         var methSet, methods, optEvent, optKey, optionSet, options;
-        optionSet = $(element);
+        optionSet = angular.element(element);
         optKey = optionSet.attr("ok-key");
         optEvent = "iso-opts";
         options = {};
         methSet = optionSet.find("[ok-sel]");
         methSet.each(function(index) {
           var $this;
-          $this = $(this);
+          $this = angular.element(this);
           return $this.attr("ok-sortby-key", scope.getHash($this.attr("ok-sel")));
         });
         methods = scope.createSortByDataMethods(methSet);
@@ -114,7 +114,7 @@ angular.module("iso.directives")
         methSet = optionSet.find("[ok-sel]");
         methSet.each(function(index) {
           var $this;
-          $this = $(this);
+          $this = angular.element(this);
           return $this.attr("ok-sortby-key", scope.getHash($this.attr("ok-sel")));
         });
         methods = scope.createSortByDataMethods(methSet);
@@ -144,7 +144,7 @@ angular.module("iso.directives")
       doOption = function(event) {
         var selItem;
         event.preventDefault();
-        selItem = $(event.target);
+        selItem = angular.element(event.target);
         if (selItem.hasClass(activeClass)) {
           return false;
         }

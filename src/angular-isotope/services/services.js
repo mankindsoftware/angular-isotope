@@ -7,7 +7,7 @@ angular.module("iso.services", ["iso.config"], [
         storedOptions = config.defaultOptions || {};
         return {
           store: function(option) {
-            storedOptions = $.extend.apply(null, [true, storedOptions].concat(option));
+            angular.extend(storedOptions, option);
             return storedOptions;
           },
           retrieve: function() {
