@@ -42,7 +42,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="row">
-          <h1>Angular-Isotope Example <small>orderBy</small></h1>
+          <h1>Angular-Isotope Example <small>track by</small></h1>
           <h4>
             <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
           </h4>
@@ -77,116 +77,87 @@
             <button type='button' class='btn btn-default' onClick="addToList()">Add item to array</button>
           </div>
         </div>
-           
+    
         <p></p>
         <div class="row">
           <div class="col-md-12">
-            <h4>ng-repeat with orderBy</h4> 
-            <div hljs><li ng-repeat="x in xList | orderBy:'date'" isotope-item>...</li></div>
+            <h4>ng-repeat with track by and orderBy</h4> 
+            <div hljs><li ng-repeat="x in xList track by x.number | orderBy:'date'" isotope-item>...</li></div>
           </div>
         </div>
-
         <div class="row">
-          <!-- ISOTOPECONTAINTER -->
           <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-            <li ng-repeat="x in xList | orderBy:'date'" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
+            <li ng-repeat="x in xList track by x.number | orderBy:'date'" isotope-item class="kindling {{x.class}}">
                <div class="symbol">{{x.name}}</div>
                <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
                <div class="number" number="{{x.number}}">{{x.number}}</div>
             </li>
           </ul>
-          <!-- /ISOTOPECONTAINTER -->
         </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <h4>xList</h4>
-            <div>Live view of this demo's array.</div>
-            <p></p>
-            <div class="well">{{xList}}</div>
-          </div>
-        </div>
-      
       </div>
-      
+
       <!-- COLUMN 2 -->
+      
       <div class="col-md-6">
-        
         <div class="row">
           <h4><a href="index.html" >Basic</a> | <a href="advanced.html"> ng-repeat with orderBy filter </a> | <a href="advancedplus.html">Best Practice</a></h4>
         </div>
 
-        <div class="row">
+        <div class='row'>
           <div class="col-md-12 well">
-          <h3>Using ng-repeat with orderBy and other filters</h3>
-          <h4 class='text-danger'><b>!! Added Elements are Not Positioned !!</b></h4>
-          <p>Angular-Isotope looks for the last item in the array before the Isotope mode is refreshed as in the code below.  Adding a new item to the original array does not refresh Isotope because it is not considered the last item in the orderBy scenario.
-          </p>
+          <h3>Use ng-repeat with "track by"</h3>
+          <h4>Angular Saves and Restores Isotope's Model</h4>
+          In the newer vesions of Angular, elements are reused if you use the "ng-repeat / track by" combination. If the original model reappears, Angular will assign the original DOM element back to it. Additionally, a new element added to the original array will be indicated as $last=true, which makes Angular-Isotope do an automatic refresh.
           <p>
           <div hljs>
-if (attrs.ngRepeat && true === scope.$last) {
-  element.ready(function() {
-    return $timeout((function() {
-      return scope.refreshIso();
-    }), config.refreshDelay || 0);
-  });
-}
+<ul id="isotopeContainer" isotope-container ng-cloak>
+  <li ng-repeat="x in xList track by x.number" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
+    <div class="symbol">{{x.name}}</div>
+    <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
+    <div class="number" number="{{x.number}}">{{x.number}}</div>
+  </li>
+</ul></div>
+          <p>
+          The original element is identified by the "track by" key name, such as "name" or "date". This is not a true, hashed-object comparison. If an object has the same key as an earlier object, the corresponding DOM element will be attached to it. 
           </div>
-          </p>
+        </div>
 
+
+      <div class="row">
+        <div class="col-md-12 well">
+          <h3>Using "track by" in ng-repeat</h3>
+          <hljs>
+<ul id="isotopeContainer" isotope-container ng-cloak>
+  <li ng-repeat="x in xList track by x.number | orderBy:'date'" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
+    <div class="symbol">{{x.name}}</div>
+    <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
+    <div class="number" number="{{x.number}}">{{x.number}}</div>
+  </li>
+</ul>
+          <hljs>
          </div>
         </div>
 
         <div class="row">
           <div class="col-md-12 well">
-          <h3>Using Angular-Isotope event to refresh</h3>
-          <h4>Use an empty iso-method event.</h4>
-          <p>This is equivalent to calling 'isotope()'</p>
-          <p><div hljs>$scope.$emit('iso-method', {name:null, params:null})</div></p>
-          <h4>Replicate the add and refresh below:</h4>
-          <ol>
-          <li><button class='btn btn-success' onClick="addToList()">addToList()</button></li>
-          <li><button class="btn btn-success" ng-click="$emit('iso-method', {name:null, params:null})">$emit('iso-method', {name:null, params:null})</button></li>
-          </ol>
-          </div>
-
-        <div class="row">
-          <div class="col-md-12 well">
-          <h3>Please use "track by".</h3>
-          <p>
-          Ng-repeat's "track by" allows a key to be specified, for example "name" or "id", by which a model is reassociated with a pre-existing DOM element/Isotope model.  The more proactive DOM element management required of Angular, to track and reuse elements, has the advantage of letting the Isotope DOM be consistent with the Angular model, without any added $watch, refresh, or similar mechanisms.
-          </p>
+            <h3>xList</h3>
+            <h4>Live view of this demo's array.</h4>
+            <p></p>
+            <div class="well">{{xList}}</div>
           </div>
         </div>
-
-        </div>
-
       </div>
     </div>
   </div>
 
   <script src="scripts/vendor/jquery-2.1.0.min.js"></script>
   <script>
-    var addToList = function(number) {
+    var addToList = function() {
       var s=angular.element('#isotopeContainer').scope();
       s.count = s.count || 0;
-      var newItem={name:'add', number:number || s.count--, date: Date.now(), class:'purple'};
+      var newItem={name:'add', number:s.count--, date: Date.now(), class:'purple'};
       s.$apply(s.xList.push(newItem));
-    };
-    var addLastItem = function() {
-      s.lastNumber = s.lastNumber || [];
-      addToList(s.lastNumber.shift());
-    };
-    var removeItem = function(elem) {
-      if (!Array.prototype.filter) return;
-      var s=angular.element('#isotopeContainer').scope();
-      var number = $(elem).find(".number").attr("number");
-      var items = s.xList.filter(function( obj ) {
-        return +obj.number != +number;
-      });
-      s.lastNumber = s.lastNumber || [];
-      s.lastNumber.unshift(number);
-      s.$apply(s.xList = items);
     };
   </script>
   <script src="scripts/vendor/angular.min.js"></script>
