@@ -67,7 +67,20 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
       $scope.isoMode = isoInit.isoMode || "addItems";
       return $timeout(function() {
         var opts = optionsStore.retrieve();
-        ((window.jQuery && isotopeContainer.isotope(opts)) || new Isotope(isotopeContainer, opts));
+        if (!(window.jQuery && isotopeContainer.isotope(opts)))
+        {
+           var instance = new Isotope(isotopeContainer[0], opts);
+
+           isotopeContainer.isotope = function(options, callback) {
+                var args = Array.prototype.slice.call( arguments, 1 );
+                if ( typeof options === 'string' ) {
+                    return(instance[options].apply(instance, args));
+                } else {
+                    instance.option( options );
+                    instance._init( callback );
+                }
+           }
+        }
         postInitialized = true;
       });
     };
