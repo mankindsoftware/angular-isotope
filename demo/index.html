@@ -252,7 +252,7 @@ $scope.$emit('iso-method', {name:methodName, params:optionalParameters}; </div>
     var removeItem = function(elem) {
       if (!Array.prototype.filter) return;
       var s=angular.element('#isotopeContainer').scope();
-      var number = $(elem).find(".number").attr("number");
+      var number = angular.element(elem).find(".number").attr("number");
       var items = s.xList.filter(function( obj ) {
         return +obj.number != +number;
       });
