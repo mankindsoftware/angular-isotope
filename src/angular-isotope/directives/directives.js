@@ -89,13 +89,13 @@ angular.module("iso.directives")
     restrict: "A",
     controller: "isoSortByDataController",
     link: function(scope, element, attrs) {
-      var createSortByDataMethods, createOptions, doOption, emitOption, optKey, optPublish, methPublish, optionSet, determineAciveClass, activeClass, activeSelector, active;
+      var createSortByDataMethods, createOptions, doOption, emitOption, optKey, optPublish, methPublish, optionSet, determineActiveClass, activeClass, activeSelector, active;
       optionSet = $(element);
       optPublish = attrs.okPublish || attrs.okOptionsPublish || topics.MSG_OPTIONS;
       methPublish = attrs.okMethodPublish || topics.MSG_METHOD;
       optKey = optionSet.attr("ok-key");
 
-      var determineActiveClass = function() {
+      determineActiveClass = function() {
         activeClass = attrs.okActiveClass;
         if (!activeClass) {
           activeClass = optionSet.find(".selected").length ? "selected" : "active";
