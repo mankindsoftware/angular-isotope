@@ -95,7 +95,7 @@ angular.module("iso.directives")
       methPublish = attrs.okMethodPublish || topics.MSG_METHOD;
       optKey = optionSet.attr("ok-key");
 
-      determineActiveClass = function() {
+      var determineActiveClass = function() {
         activeClass = attrs.okActiveClass;
         if (!activeClass) {
           activeClass = optionSet.find(".selected").length ? "selected" : "active";
