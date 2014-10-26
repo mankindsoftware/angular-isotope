@@ -6,7 +6,7 @@
     "homepage": "http://mankindsoftware.github.com/angular-isotope",
     "repository": {
       "type": "git",
-      "url": "git://github.com/mankindsoftware/angular-isotope.git"
+      "url": "git://github.com/spacenick/angular-isotope.git"
     },
     "dependencies": {},
     "devDependencies": {
