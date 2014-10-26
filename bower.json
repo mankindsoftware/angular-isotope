@@ -1,6 +1,6 @@
 {
-    "name": "angular-isotope",
-    "main": ["dist/angular-isotope.js"],
+    "name": "angular-isotope-fixed",
+    "main": ["dist/angular-isotope-fixed.js"],
     "version": "0.0.8",
     "homepage": "https://github.com/mankindsoftware/angular-isotope",
     "authors": [
