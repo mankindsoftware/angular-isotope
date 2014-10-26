@@ -2,7 +2,7 @@
     "author": "Mark Allen Hall",
     "name": "angular-isotope-fixed",
     "description": "AngularIsotope - Isotope directives library for AngularJS.",
-    "version": "0.1.15",
+    "version": "0.1.16",
     "homepage": "http://mankindsoftware.github.com/angular-isotope",
     "repository": {
       "type": "git",
