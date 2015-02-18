@@ -1,6 +1,6 @@
 angular.module("iso.controllers", ["iso.config", "iso.services"])
 .controller("angularIsotopeController", [
-  "iso.config", "iso.topics", "$scope", "$timeout", "optionsStore", function(config, topics, $scope, $timeout, optionsStore) {
+  "iso.config", "iso.topics", "$scope", "$timeout", "optionsStore", "$rootScope", function(config, topics, $scope, $timeout, optionsStore, $rootScope) {
     "use strict";
     var buffer, initEventHandler, isoMode, isotopeContainer, methodHandler, onLayoutEvent, optionsHandler, postInitialized, scope;
     onLayoutEvent = "isotope.onLayout";
@@ -22,7 +22,7 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     });
     initEventHandler = function(fun, evt, hnd) {
       if (evt) {
-        return fun.call($scope, evt, hnd);
+        return fun.call($rootScope, evt, hnd);
       }
     };
     $scope.delayInit = function(isoInit) {
@@ -39,8 +39,9 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     $scope.init = function(isoInit) {
       optionsStore.storeInit(isoInit);
       isotopeContainer = isoInit.element;
-      initEventHandler($scope.$on, isoInit.isoOptionsEvent || topics.MSG_OPTIONS, optionsHandler);
-      initEventHandler($scope.$on, isoInit.isoMethodEvent || topics.MSG_METHOD, methodHandler);
+      initEventHandler($rootScope.$on, isoInit.isoOptionsEvent || topics.MSG_OPTIONS, optionsHandler);
+      initEventHandler($rootScope.$on, isoInit.isoOptionsEvent || topics.MSG_OPTIONS, optionsHandler);
+      initEventHandler($rootScope.$on, isoInit.isoMethodEvent || topics.MSG_METHOD, methodHandler);
       $scope.isoMode = isoInit.isoMode || "addItems";
       return $timeout(function() {
         var opts = optionsStore.retrieve();
