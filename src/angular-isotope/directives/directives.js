@@ -6,6 +6,7 @@ angular.module("iso.directives")
     var options;
     options = {};
     return {
+      scope: {},
       controller: "angularIsotopeController",
       link: function(scope, element, attrs) {
         var isoInit, isoOptions, linkOptions;
@@ -39,7 +40,7 @@ angular.module("iso.directives")
       require: "^isotopeContainer",
       link: function(scope, element, attrs) {
 
-        scope.setIsoElement(element);
+        scope.$emit('setIsoElement', element);
         scope.$on('$destroy', function(message) {
           $rootScope.$broadcast(topics.MSG_REMOVE, element);
         });
@@ -55,7 +56,7 @@ angular.module("iso.directives")
             return $timeout((function() {
               return scope.refreshIso();
             }), config.refreshDelay || 0);
-          });          
+          });
         }
         return element;
       }
