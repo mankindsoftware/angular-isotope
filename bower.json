@@ -1,7 +1,7 @@
 {
-    "name": "angular-isotope",
-    "main": ["dist/angular-isotope.js"],
-    "version": "0.0.8",
+    "name": "angular-isotope-fixed",
+    "main": ["dist/angular-isotope-fixed.js"],
+    "version": "0.1.16",
     "homepage": "https://github.com/mankindsoftware/angular-isotope",
     "authors": [
       "Mark Allen Hall <markallenhall@gmail.com>"

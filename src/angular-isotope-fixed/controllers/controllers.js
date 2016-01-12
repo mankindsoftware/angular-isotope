@@ -160,8 +160,9 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
       });
       return reduction;
     };
-    getValue = function(selector, $elem, type, evaluate) {
+    getValue = function(selector, elem, type, evaluate) {
       var getText, item, text, toType, val;
+      var $elem = angular.element(elem);
       getText = function($elem, item, selector) {
         var text;
         if (!item.length) {
